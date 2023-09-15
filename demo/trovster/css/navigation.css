@@ -1,0 +1,89 @@
+/*
+* Author: 		Trevor Morris
+* Contact:		trovster@gmail.com
+* Version:		0.5
+* Updated:		06/06/2007
+* Notes:		Navigation stylesheet
+*
+* CONTENTS
+* -------------------------
+*
+*/
+
+.navigation {}
+
+#navigation {
+	position: absolute; top: 0; right: 0;
+}
+	#navigation ul,
+	#navigation ul li {
+		padding: 0; margin: 0;
+		list-style: none;
+	}
+		#navigation ul li {
+			float: left;
+		}
+			#navigation ul li a {
+				display: block;
+				padding: 15px 15px 10px; margin-left: 10px;
+				text-align: center; text-decoration: none; text-transform: lowercase;
+				border: 0;
+				background: url(img/opacity.png) repeat 0 0;
+				
+			}
+			#navigation ul li.f a {
+				margin-left: 0;
+			}
+			
+			#navigation ul li a:focus,
+			#navigation ul li a:hover {
+				color: #fff;
+			}
+			
+			#navigation ul li.active a,
+			#navigation ul li.active a:focus,
+			#navigation ul li.active a:hover {
+				text-decoration: none; color: #fff;
+				padding-bottom: 20px;
+			}
+
+
+#content #content-primary ul.pagination {
+	overflow: hidden;
+	display: table;
+	padding: 0; margin: 0 auto; 
+	list-style: none;
+	white-space: nowrap;
+}
+ul.pagination li {
+	display: table-cell;
+}
+* html ul.pagination li {
+	float: left;
+	display: inline;
+}
+ul.pagination li a {
+	display: block; width:auto;
+	padding: 0.5em 1em;
+	text-align: center;
+	border: 5px solid #1C1C1C;
+}
+ul.pagination li.f a {
+	margin-right: 50px;
+}
+ul.pagination li.l a {
+	margin-left: 50px;
+}
+ul.pagination li.f a::before {
+	content: '« ';
+}
+ul.pagination li.l a::after {
+	content: ' »';
+}
+ul.pagination li.active a,
+ul.pagination li.active a:hover,
+ul.pagination li.active a:focus {
+	background-color: #111;
+	color: #fff; text-decoration: none;
+	cursor: default;
+}

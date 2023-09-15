@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>jQuery load example</title>
+<style type="text/css" media="screen">
+<!--
+body { font: 1em "Trebuchet MS", verdana, arial, sans-serif; font-size: 100%; color: #000; padding: 20px;}
+input, textarea { font-family: Arial; font-size: 100%; padding: 3px; margin-left: 10px; }
+#wrapper { width: 600px; margin: 0 auto; }
+</style>
+</head>
+<body>
+<div id="wrapper">
+    <h1>Font Finder</h1>
+    <form action="load-example.php.html" method="post" accept-charset="utf-8">
+        <fieldset>
+            <legend>Find a font</legend>
+            <label for="name">Name</label><input type="text" name="name" value="" id="name" />
+            <input type="submit" value="Search &rarr;" />
+        </fieldset>
+    </form>
+    <div id="results">
+        <h2>Results</h2>
+        <ul>
+            <li>None so far...</li>        </ul>
+    </div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function () {
+   $('#name').keyup(function () {
+       $('#results ul').load('load-example.php #results li', { name : this.value });
+   });
+});
+</script>
+</body>
+</html>

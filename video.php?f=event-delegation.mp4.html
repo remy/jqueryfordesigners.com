@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Video</title>
+    <style type="text/css" media="screen">
+    <!--
+        BODY { margin: 10px; padding: 0; font: 1em "Trebuchet MS", verdana, arial, sans-serif; font-size: 100%; }
+        H1 { margin-bottom: 2px; font-family: Garamond, "Times New Roman", Times, Serif;}
+        DIV.container { margin: auto; width: 90%; margin-bottom: 10px;}
+        TEXTAREA { width: 80%;}
+        FIELDSET { border: 1px solid #ccc; padding: 1em; margin: 0; }
+        LEGEND { color: #ccc; font-size: 120%; }
+        INPUT, TEXTAREA { font-family: Arial, verdana; font-size: 125%; padding: 7px; border: 1px solid #999; }
+        LABEL { display: block; margin-top: 10px; } 
+        IMG { margin: 5px; }
+        div {
+            width: 800px;
+            margin: auto;
+        }
+        #video {
+            margin: auto 0;
+        }
+        
+        ul {
+            padding: 10px 0;
+            margin: 0;
+            margin-bottom: 10px;
+            background-color: #212121;
+	    text-align: center;
+        }
+        
+        li {
+            padding: 10px;
+            display: inline;
+        }
+        
+        li a {
+            color: #eee;
+        }
+
+	a:hover {
+		background-color: #eee!important;
+		color: #212121;
+		text-decoration: none;
+	}
+
+	#feed {
+		background: url(images/rss.png) no-repeat 0 2px;
+		padding-left: 20px
+	}
+
+	#home {
+		background: url(images/house.png) no-repeat 0 2px;
+		padding-left: 20px
+	}
+
+
+    -->
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a id="feed" href="feed/rss/index.html">Subscribe to feed</a></li>
+        <li><a id="home" href="index.html">jQuery for Designers - screencasts &amp; tutorials</a></li>
+    </ul>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script>
+	<script type="text/javascript">
+		var params = {
+			allowfullscreen : 'true',
+			allownetworking : 'all',
+			allowscriptaccess : 'always'
+		};
+		var flashvars = {
+			file : "http://jqueryfordesigners.com/media/event-delegation.mp4",
+//			plugins : 'embed-1',
+			controlbar : 'bottom'
+		};
+		var attr = {
+			id : 'j4dvideo',
+			name : 'jd4video'
+		};
+		swfobject.embedSWF("/downloads/player-viral.swf","video","800","620","9",'expressInstall.swf', flashvars, params, attr);
+	</script>
+
+	<div><div id="video"></div></div>
+
+<!--    <div id="j4dvideo">
+    <object id="video" width="800" height="620" type="application/x-shockwave-flash" data="/downloads/flvplayer.swf">
+    <param name="bgcolor" value="#FFFFFF" />
+    <param name="flashvars" value="controlbar=none&amp;plugins=embed-1&amp;file=http://jqueryfordesigners.com/media/event-delegation.mp4"/>
+    <param name="allowfullscreen" value="true"/>
+    </object>
+    </div>-->
+</body>
+</html>
+
+
+
+
+

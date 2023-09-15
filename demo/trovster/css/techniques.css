@@ -1,0 +1,72 @@
+/*
+* Author: 		Trevor Morris
+* Contact:		trovster@gmail.com
+* Version:		1.0
+* Updated:		06/06/2007
+* Notes:		Below is the core code for resuing in common
+				techniques such as image replacement, easy clearing and
+				a method of hiding elements without display: none;
+*
+* CONTENTS
+* -------------------------
+* Accessible Hiding
+* Image Replacement
+*  + Phark
+*  + Gilder/Levin
+* Easy Clearing
+*
+*/
+
+/* Accessible Hiding
+-------------------------------------------------------------------------------------------------- */
+.access,
+legend,
+.navigation h2,
+.geo,
+.more a span, .more a strong,
+#navigation h2, body.movies #extra h3, #quotes h3 {
+	position: absolute; top: -9999px; left: -9999px;
+	overflow: hidden;
+	height: 0.0; width: 0.0;
+	font-size: 0.0; line-height: 0.0;
+}
+
+
+/* Image Replacement (Phark) http://phark.typepad.com/phark/2003/08/accessible_imag.html
+-------------------------------------------------------------------------------------------------- */
+.phark,
+#branding h1 a,
+.entry-rating {
+	display: block;	overflow: hidden;
+	font-size: 0.0;	line-height: 0.0;
+	text-decoration: none; text-indent: -9999px;
+	background: transparent no-repeat 0 0;
+	border: 0;
+}
+
+
+/* Image Replacement (Gilder/Levin) http://levin.grundeis.net/files/20030809/alternatefir.html
+-------------------------------------------------------------------------------------------------- */
+.gl, .gl span.gl-ir {
+	position: relative;
+	display: block; overflow: hidden;
+}
+.gl span.gl-ir {
+	position: absolute; top: 0; left: 0; z-index: 5001;
+	margin: 0; padding: 0;
+	font-size: 0.0; line-height: 0.0;
+}
+
+
+/* Easy Clearing - http://www.positioniseverything.net/easyclearing.html
+-------------------------------------------------------------------------------------------------- */
+.clearfix::after,
+#content::after,
+#content .section::after,
+body.cv #portfolio ul li::after {
+	content: '.';
+	clear: both;
+	display: block; visibility: hidden;
+	height: 0.0; width: 0.0;
+	font-size: 0.0;	line-height: 0.0;
+}

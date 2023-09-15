@@ -1,0 +1,97 @@
+/*
+* Author: 		Trevor Morris
+* Contact:		trovster@gmail.com
+* Version:		0.3
+* Updated:		23/05/2008
+* Notes:		Grids
+*
+* CONTENTS
+* -------------------------
+* =s	- setup
+* =16 	- sixteen
+*/
+
+
+/* =s - setup
+--------------------------------------------------------------------------------------------------*/
+.column {
+	float: left;
+	display: inline;
+}
+#container .last {
+	margin-right: 0;
+}
+#container .first,
+#container .new {
+	clear: left;
+}
+#container .top {
+	margin-top: 0;
+}
+
+
+/* =16 - sixteen -- 30px column width, 20px gutter width
+--------------------------------------------------------------------------------------------------*/
+.sixteen,
+#container .sixteen,
+#container .full {
+	width: 780px;
+	margin-right: 0;
+}
+.sixteen .column {
+	width: 30px;
+	margin: 3em 20px 0 0;
+}
+.sixteen .two {
+	width: 80px;
+}
+.sixteen .three {
+	width: 130px;
+}
+.sixteen .four,
+.sixteen .quarter {
+	width: 180px;
+}
+.sixteen .five {
+	width: 230px;
+}
+.sixteen .six {
+	width: 280px;
+}
+.sixteen .seven {
+	width: 330px;
+}
+.sixteen .eight,
+.sixteen .half,
+.sixteen .double {
+	width: 380px;
+}
+.sixteen .nine {
+	width: 430px;
+}
+.sixteen .ten {
+	width: 480px;
+}
+.sixteen .eleven {
+	width: 530px;
+}
+.sixteen .twelve,
+.sixteen .three-quarter {
+	width: 580px;
+}
+.sixteen .thirteen {
+	width: 630px;
+}
+.sixteen .fourteen {
+	width: 680px;
+}
+.sixteen .fifteen {
+	width: 730px;
+}
+
+.sixteen .third {
+	width: 247px;
+}
+.sixteen .last.third {
+	width: 246px; 
+}

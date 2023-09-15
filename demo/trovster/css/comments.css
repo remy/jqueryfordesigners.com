@@ -1,0 +1,56 @@
+/*
+* Author: 		Trevor Morris
+* Contact:		trovster@gmail.com
+* Version:		0.1
+* Updated:		28/02/2008
+* Notes:		CSS where comments appear
+*
+* CONTENTS
+* -------------------------
+* =l layout
+*
+* 
+*/
+
+
+/* =l layout
+--------------------------------------------------------------------------------------------------*/
+#comments {}
+	#comments .hentry {
+		position: relative; overflow: hidden;
+		padding: 0 20px 0; margin: 0 -20px;
+		border-bottom: 1px solid #1C1C1C;
+		background-color: #111;
+	}
+	#comments .hentry .column {
+		margin-top: 1.5em;
+	}
+	#comments .vcard {
+		min-height: 85px;
+	}
+	#comments .vcard img {
+		position: absolute; top: 1.5em; left: 20px;
+		text-align: center;
+	}
+	#comments .vcard h4,
+	#comments .vcard p {
+		margin-left: 100px;
+	}
+	#comments .vcard h4,
+	#comments .vcard p.website {
+		margin-bottom: 0;
+	}
+	#comments .vcard p.entry-date {
+		margin-bottom: 1em;
+	}
+	#comments .vcard p.website {
+		text-transform: lowercase;
+	}
+	
+	
+	#comments .odd {
+		background-color: transparent;
+	}
+	#comments .l {
+		border-bottom: 0;
+	}

@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Language" content="en-gb" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<meta name="keywords" content="" />
+	<title>  Using Ajax to Validate Forms | jQuery for Designers - Tutorials and screencasts</title>
+	<link rel="stylesheet" type="text/css" href="wp-content/themes/j4d/static/css/all.min.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="feed/rss/index.html" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="feed/rss/index.html" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="feed/atom/index.html" />
+
+	<link rel="pingback" href="xmlrpc.php" />
+		<link rel='archives' title='June 2011' href='2011/06/index.html' />
+	<link rel='archives' title='February 2011' href='2011/02/index.html' />
+	<link rel='archives' title='August 2010' href='2010/08/index.html' />
+	<link rel='archives' title='July 2010' href='2010/07/index.html' />
+	<link rel='archives' title='April 2010' href='2010/04/index.html' />
+	<link rel='archives' title='March 2010' href='2010/03/index.html' />
+	<link rel='archives' title='January 2010' href='2010/01/index.html' />
+	<link rel='archives' title='October 2009' href='2009/10/index.html' />
+	<link rel='archives' title='September 2009' href='2009/09/index.html' />
+	<link rel='archives' title='August 2009' href='2009/08/index.html' />
+	<link rel='archives' title='July 2009' href='2009/07/index.html' />
+	<link rel='archives' title='June 2009' href='2009/06/index.html' />
+	<link rel='archives' title='April 2009' href='2009/04/index.html' />
+	<link rel='archives' title='March 2009' href='2009/03/index.html' />
+	<link rel='archives' title='February 2009' href='2009/02/index.html' />
+	<link rel='archives' title='January 2009' href='2009/01/index.html' />
+	<link rel='archives' title='December 2008' href='2008/12/index.html' />
+	<link rel='archives' title='October 2008' href='2008/10/index.html' />
+	<link rel='archives' title='August 2008' href='2008/08/index.html' />
+	<link rel='archives' title='July 2008' href='2008/07/index.html' />
+	<link rel='archives' title='June 2008' href='2008/06/index.html' />
+	<link rel='archives' title='May 2008' href='2008/05/index.html' />
+	<link rel='archives' title='April 2008' href='2008/04/index.html' />
+	<link rel='archives' title='March 2008' href='2008/03/index.html' />
+	<link rel='archives' title='February 2008' href='2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='2007/12/index.html' />
+<link rel="alternate" type="application/rss+xml" title="jQuery for Designers &raquo; Using Ajax to Validate Forms Comments Feed" href="using-ajax-to-validate-forms/feed/index.html" />
+<link rel='stylesheet' id='msw_wpfm_scan-css'  href='wp-content/plugins/wordpress-file-monitor/wordpress-file-monitor.php%3Fver=scan.html' type='text/css' media='all' />
+<script type='text/javascript' src='http://jqueryfordesigners.com/wp-includes/js/jquery/jquery.js?ver=1.7.1'></script>
+<script type='text/javascript' src='wp-content/plugins/wp-ajax-edit-comments/js-includes/wp-ajax-edit-comments.js.php%3Fver=1.1.html'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php%3Frsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://jqueryfordesigners.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='It&#8217;s all about CSS' href='index.html%3Fp=4.html' />
+<link rel='next' title='Slide out and drawer effect' href='index.html%3Fp=7.html' />
+<meta name="generator" content="WordPress 3.3.1" />
+<link rel='canonical' href='index.html%3Fp=6.html' />
+<link rel='shortlink' href='index.html%3Fp=6.html' />
+<link type="text/css" rel="stylesheet" href="wp-content/plugins/wp-ajax-edit-comments/css/editComments.css" />
+</head>
+<body id="articlePage">
+
+
+	<!-- BEGIN header -->
+	<div id="topstrap">
+		<ul>
+      <!-- <li class="new"><strong>New!</strong> <a href="http://full-frontal.org">Full Frontal - the JavaScript conference</a></li> -->
+			<li class="subscribe">Subscribe to our <a class="feed" href="feed/rss/index.html">Articles</a> <a class="podcast" href="http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=281057468">Podcast</a></li>
+		</ul>
+	</div>
+	
+	<div id="header" class="clearFix">
+	
+		<div class="minWidth">	
+			<h1><a href="index.html"><span>jQuery for Designers</span></a></h1>
+			
+			<ul id="filter">
+				<li>Filter by</li>
+				<!-- <li><a href="/">All</a></li> -->
+				<li><a href="tag/easy/index.html">Easy</a></li>
+				<li><a href="tag/medium/index.html">Medium</a></li>
+				<li><a href="tag/hard/index.html">Hard</a></li>
+				<li id="searchLink"><a href="index.html%3Fp=6.html#searchForm">Search</a></li>
+			</ul>
+			
+		</div>	
+	</div>
+	<!-- END header -->
+	
+	<!-- BEGIN titleHolder -->
+	<div id="titleHolder" class="clearFix">
+		<div class="titleHolderInner">
+		<div id="scrollButtons">
+			<div class="minWidth clearFix">
+	
+        <ul class="clearFix" id="articleStrip">
+      <li class="selected"><a title="Using Ajax to Validate Forms" href="index.html%3Fp=6.html"><img alt="Using Ajax to Validate Forms" src="images/video/validate-thumb.gif" /></a><em class="selected">Selected</em></li>
+<li><a title="It&#8217;s all about CSS" href="index.html%3Fp=4.html"><img alt="It&#8217;s all about CSS" src="images/video/css-thumb.gif" /></a></li><li class="new"><a title="Simple use of Event Delegation" href="index.html%3Fp=343.html"><img alt="Simple use of Event Delegation" src="images/video/event-delegation-thumb.gif" /><em>New</em></a></li>
+<li><a title="Populate Select Boxes" href="index.html%3Fp=328.html"><img alt="Populate Select Boxes" src="images/video/select-boxes-thumb.gif" /></a></li>
+<li><a title="Scroll Linked Navigation" href="index.html%3Fp=309.html"><img alt="Scroll Linked Navigation" src="images/video/scroll-link-nav_thumb.gif" /></a></li>
+<li><a title="Debugging Tools" href="index.html%3Fp=290.html"><img alt="Debugging Tools" src="images/video/debuggers_thumb.gif" /></a></li>
+<li><a title="Enabling the Back Button" href="index.html%3Fp=252.html"><img alt="Enabling the Back Button" src="http://static.jqueryfordesigners.com/images/video/bbq_thumb.gif" /></a></li>
+<li><a title="J4D update: My Book, Other Books, Workshops and talks" href="index.html%3Fp=247.html"><img alt="J4D update: My Book, Other Books, Workshops and talks" src="wp-content/themes/j4d/static/images/titleholder_placeholder.gif" /></a></li>
+<li><a title="Adding Keyboard Navigation" href="index.html%3Fp=231.html"><img alt="Adding Keyboard Navigation" src="http://static.jqueryfordesigners.com/images/video/keyboard-nav-thumb.jpg" /></a></li>
+<li><a title="Fixed Floating Elements" href="index.html%3Fp=214.html"><img alt="Fixed Floating Elements" src="http://static.jqueryfordesigners.com/images/video/fixedfloat-thumb.gif" /></a></li>
+<li><a title="Want to learn more about JavaScript? Go Full Frontal!" href="index.html%3Fp=199.html"><img alt="Want to learn more about JavaScript? Go Full Frontal!" src="wp-content/themes/j4d/static/images/titleholder_placeholder.gif" /></a></li>
+<li><a title="iPhone-like Sliding Headers" href="index.html%3Fp=190.html"><img alt="iPhone-like Sliding Headers" src="images/video/header-slide-thumb.jpg" /></a></li>
+<li><a title="Automatic Infinite Carousel" href="index.html%3Fp=158.html"><img alt="Automatic Infinite Carousel" src="images/video/infinite-auto-thumb.jpg" /></a></li>
+<li><a title="Play School: Broken Repeating Animations" href="index.html%3Fp=145.html"><img alt="Play School: Broken Repeating Animations" src="images/video/repeat-effect-thumb.png" /></a></li>
+<li><a title="API: queue &#038; dequeue" href="index.html%3Fp=135.html"><img alt="API: queue &#038; dequeue" src="images/video/queue-thumb.gif" /></a></li>
+<li><a title="jQuery Infinite Carousel" href="index.html%3Fp=128.html"><img alt="jQuery Infinite Carousel" src="images/video/infinite-thumb.jpg" /></a></li>
+<li><a title="jQuery for Designers: In Live Action" href="index.html%3Fp=123.html"><img alt="jQuery for Designers: In Live Action" src="wp-content/themes/j4d/static/images/titleholder_placeholder.gif" /></a></li>
+<li><a title="Return to normal scheduling" href="index.html%3Fp=120.html"><img alt="Return to normal scheduling" src="wp-content/themes/j4d/static/images/titleholder_placeholder.gif" /></a></li>
+<li><a title="SlideDown Animation Jump Revisited" href="index.html%3Fp=89.html"><img alt="SlideDown Animation Jump Revisited" src="images/video/animation-jump2-thumb.gif" /></a></li>
+<li><a title="BBC Radio 1 Zoom Tabs" href="index.html%3Fp=81.html"><img alt="BBC Radio 1 Zoom Tabs" src="images/video/radio1-thumb.gif" /></a></li>
+<li><a title="API: map &#038; grep" href="index.html%3Fp=75.html"><img alt="API: map &#038; grep" src="images/video/mapgrep-thumb.gif" /></a></li>
+<li><a title="SXSW, Server Issues and Redesign" href="index.html%3Fp=54.html"><img alt="SXSW, Server Issues and Redesign" src="wp-content/themes/j4d/static/images/titleholder_placeholder.gif" /></a></li>
+<li><a title="jQuery look: Tim Van Damme" href="index.html%3Fp=25.html"><img alt="jQuery look: Tim Van Damme" src="images/video/tvd-thumb.jpg" /></a></li>
+<li><a title="How to tell if an element exists" href="index.html%3Fp=24.html"><img alt="How to tell if an element exists" src="images/video/element-exists-thumb.jpg" /></a></li>
+<li><a title="The Book and The Redesign" href="index.html%3Fp=23.html"><img alt="The Book and The Redesign" src="wp-content/themes/j4d/static/images/titleholder_placeholder.gif" /></a></li>
+<li><a title="Ajax Spy" href="index.html%3Fp=22.html"><img alt="Ajax Spy" src="images/video/ajax-spy-thumb.jpg" /></a></li>
+<li><a title="Play School: Easy Ajax &#8211; load" href="index.html%3Fp=21.html"><img alt="Play School: Easy Ajax &#8211; load" src="images/video/api-load-thumb.jpg" /></a></li>
+<li><a title="API: Filter &#038; Find" href="index.html%3Fp=20.html"><img alt="API: Filter &#038; Find" src="images/video/api-filter-find-thumb.jpg" /></a></li>
+<li><a title="Simple jQuery Spy Effect" href="index.html%3Fp=19.html"><img alt="Simple jQuery Spy Effect" src="images/video/simple-spy-thumb.jpg" /></a></li>
+<li><a title="Fun with Overflows" href="index.html%3Fp=18.html"><img alt="Fun with Overflows" src="images/video/overflows-thumb.jpg" /></a></li>
+<li><a title="Two New Series" href="index.html%3Fp=17.html"><img alt="Two New Series" src="wp-content/themes/j4d/static/images/titleholder_placeholder.gif" /></a></li>
+<li><a title="Animation Jump &#8211; quick tip" href="animation-jump-quick-tip.1.html"><img alt="Animation Jump &#8211; quick tip" src="images/video/animation-jump-thumb.gif" /></a></li>
+<li><a title="Image Fade Revisited" href="image-fade-revisited.1.html"><img alt="Image Fade Revisited" src="images/video/image-fade-revisited-thumb.gif" /></a></li>
+<li><a title="Coda Slider Effect" href="coda-slider-effect.1.html"><img alt="Coda Slider Effect" src="images/video/coda-slider-thumb.gif" /></a></li>
+<li><a title="Help make jQuery for Designers better" href="index.html%3Fp=13.html"><img alt="Help make jQuery for Designers better" src="wp-content/themes/j4d/static/images/titleholder_placeholder.gif" /></a></li>
+<li><a title="Image Cross Fade Transition" href="index.html%3Fp=12.html"><img alt="Image Cross Fade Transition" src="images/video/image-fade-thumb.gif" /></a></li>
+<li><a title="Coda Popup Bubbles" href="coda-popup-bubbles.1.html"><img alt="Coda Popup Bubbles" src="images/video/coda-bubbles-thumb.gif" /></a></li>
+<li><a title="Slider Gallery" href="slider-gallery.1.html"><img alt="Slider Gallery" src="images/video/slider-gallery-thumb.gif" /></a></li>
+<li><a title="Image Loading" href="index.html%3Fp=9.html"><img alt="Image Loading" src="images/video/image-loading-thumb.gif" /></a></li>
+<li><a title="jQuery Tabs" href="index.html%3Fp=8.html"><img alt="jQuery Tabs" src="images/video/tabs-thumb.gif" /></a></li>
+<li><a title="Slide out and drawer effect" href="index.html%3Fp=7.html"><img alt="Slide out and drawer effect" src="images/video/slide-draw-thumb.gif" /></a></li>        </ul>
+      </div>
+		
+		</div>
+
+
+		<form id="searchForm" action="index.html">
+
+			<fieldset>
+		
+				<legend>Search</legend>
+				
+				<label for="search">Search for</label>
+				<input type="text" id="search" placeholder="screencasts &amp; tutorials" name="s" value="" /><input class="button" type="submit" value="Find articles" />
+				
+			</fieldset>
+	
+		</form>
+
+		</div>
+	</div>
+	<!-- END titleHolder -->
+	
+  <!-- content -->
+	<div id="content" class="clearFix">
+<div class="header">
+		<h1><a href="index.html%3Fp=6.html" rel="bookmark">Using Ajax to Validate Forms</a></h1>
+
+		<p><span>Posted on 18th December 2007 &mdash;</span> Forms are such a common element on the Internet we tend to blunder through them without too much thought.  However, if the web site has added a few nice touches that make the process easier, it tends to speed up the process and reduce any frustration in finding our preferred username (i.e. try getting your name under Hotmail!).
+</p>
+    <ul id="articleNav">
+      <li class="prev"><a href="index.html%3Fp=4.html" rel="prev">Earlier: <em>It&#8217;s all about CSS</em></a></li>
+      <li class="next"><a href="index.html%3Fp=7.html" rel="next">Next: <em>Slide out and drawer effect</em></a></li>
+    </ul>
+</div>
+<div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/12976/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
+		<ul class="articleNav clearFix">
+			<li class="tabDefault"><a class="tutorial selected" href="index.html%3Fp=6.html"><span>Article</span></a></li> 			<li class="tabDemo"><a class="demo" href="demo/ajax-validation.php.html"><span>Try Demo</span></a></li>			<li class="tabCode"><a class="code" href="index.html%3Fp=6.html"><span>View Code</span></a></li>
+			<li class="tabComments"><a class="comments" href="index.html%3Fp=6.html#allcomments"><em>61</em> <span>Comments</span></a></li>
+		</ul>
+		
+        <div id="article" class="clearFix">
+		
+			<div class="copy">
+            
+		    <div id="viewport" class="tutorial">
+                <div id="tutorial" class="tab">
+    				            
+            
+                <p><span id="more-6"></span>
+There&#8217;s two types of validation: </p>
+
+<ol>
+<li>Simple, server-independent validation, i.e. checking email address are the right format, password and confirm password matches, etc.</li>
+<li>Server-based validation, with can be delivered with a page refresh, or live (as this tutorial will explain), i.e. for checking whether a username is taken.</li>
+</ol>
+
+<h2>What can we do?</h2>
+
+<ul>
+<li>Live username checking</li>
+<li>Password confirmation and strength</li>
+<li>Checking if an email address is already registered</li>
+<li>URL validation, i.e. Basecamp&#8217;s site address checks if the URL is available (pretty much the same as username validation)</li>
+</ul>
+
+<h2>So why do it?</h2>
+
+<ul>
+<li>It makes the user&#8217;s experience quicker, or arguably better</li>
+<li>It&#8217;s not much extra work to put in place (explained below)</li>
+</ul>
+
+<h2>Examples in the wild</h2>
+
+<ul>
+<li><a href="https://twitter.com/signup">Twitter signup / username validation</a></li>
+<li><a href="http://pownce.com/signup/">Pownce signup / username validation</a> (though you have to click &#8216;check&#8217;)</li>
+<li><a href="http://digg.com/register/">Digg signup / username</a></li>
+<li><a href="https://signup.37signals.com/basecamp/Free/signup/new">Basecamp / URL validation</a></li>
+<li><a href="http://del.icio.us/remy.sharp?url=http%3A%2F%2Fjqueryfordesigners.com%2F&amp;title=jQuery%20for%20Designers&amp;v=4">del.icio.us / tagging</a></li>
+</ul>
+
+<h2>Howto</h2>
+
+<p>As with all these tutorials, I expect that you have built your solution to the point where it works, but now we want to add our splash of JavaScript magic.</p>
+
+<p>In our baseline example, my requirements are:</p>
+
+<ul>
+<li>Username validation kept in separate function</li>
+<li>Server side does the it&#8217;s normal job</li>
+<li>I can detect an Ajax request and return something different</li>
+</ul>
+
+<h3>Username validation</h3>
+
+<p>Our <a href="http://www.php.net/" title="PHP: Hypertext Preprocessor">PHP</a> function to validate the username reads:</p>
+
+<pre><code>function check_username($username) {
+  $username = trim($username); // strip any white space
+  $response = array(); // our response
+  
+  // if the username is blank
+  if (!$username) {
+    $response = array(
+      'ok' => false, 
+      'msg' => "Please specify a username");
+      
+  // if the username does not match a-z or '.', '-', '_' then it's not valid
+  } else if (!preg_match('/^[a-z0-9.-_]+$/', $username)) {
+    $response = array(
+      'ok' => false, 
+      'msg' => "Your username can only contain alphanumerics and period, dash and underscore (.-_)");
+      
+  // this would live in an external library just to check if the username is taken
+  } else if (username_taken($username)) {
+    $response = array(
+      'ok' => false, 
+      'msg' => "The selected username is not available");
+      
+  // it's all good
+  } else {
+    $response = array(
+      'ok' => true, 
+      'msg' => "This username is free");
+  }
+
+  return $response;        
+}
+</code></pre>
+
+<p>This format for a response is good, because we are using it to display error messages on the page, but we can also convert it to <a href="http://json.org/" title="JSON">JSON</a> and use it in our Ajax response later on.</p>
+
+<h3>Markup</h3>
+
+<p>Again, it&#8217;s assumed your markup is already designed to show error messages.</p>
+
+<p>For this example the following markup is being used within a <code>fieldset</code>:</p>
+
+<pre><code>&lt;div&gt;
+    &lt;label for=&quot;username&quot;&gt;Username, valid: a-z.-_&lt;/label&gt;
+    &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&lt;?=@$_REQUEST[&#x27;username&#x27;]?&gt;&quot; id=&quot;username&quot; /&gt;
+    &lt;span id=&quot;validateUsername&quot;&gt;&lt;?php if ($error) { echo $error[&#x27;msg&#x27;]; } ?&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3>jQuery</h3>
+
+<p>Our client side check will perform the following:</p>
+
+<ol>
+<li>Only if the value has changed run the check, i.e. ignore <a href="http://en.wikipedia.org/wiki/Meta_key" title="Meta key - Wikipedia, the free encyclopedia">meta keys</a></li>
+<li>Use a nice <a href="http://ajaxload.info/">ajax spinner</a> to indicate activity</li>
+<li>Make an Ajax request and show the response</li>
+</ol>
+
+<pre><code>$(document).ready(function () {
+  var validateUsername = $('#validateUsername');
+  $('#username').keyup(function () {
+    var t = this; 
+    if (this.value != this.lastValue) {
+      if (this.timer) clearTimeout(this.timer);
+      validateUsername.removeClass('error').html('&lt;img src=&quot;images/ajax-loader.gif&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt; checking availability...');
+      
+      this.timer = setTimeout(function () {
+        $.ajax({
+          url: 'ajax-validation.php',
+          data: 'action=check_username&#038;username=' + t.value,
+          dataType: 'json',
+          type: 'post',
+          success: function (j) {
+            validateUsername.html(j.msg);
+          }
+        });
+      }, 200);
+      
+      this.lastValue = this.value;
+    }
+  });
+});
+</code></pre>
+
+<p>The code breaks down as follows:</p>
+
+<pre><code>$(document).ready(function () {</code></pre>
+
+<p>Run the JavaScript in this (anonymous) function when the document has loaded.</p>
+
+<pre><code>var validateUsername = $('#validateUsername');</code></pre>
+
+<p>Create a cached copy of the <code>validateUsername</code> span because it will help a little with optimisation (it&#8217;s a good practise to have).</p>
+
+<pre><code>$('#username').keyup(function () {</code></pre>
+
+<p>Run the JavaScript in this (anonymous) function on key up.</p>
+
+<pre><code>var t = this;</code></pre>
+
+<p>Cache the &#8216;this&#8217; instance as we need access to it within a setTimeout, where &#8216;this&#8217; is set to &#8216;window&#8217;, which can cause all manners of confusion.</p>
+
+<pre><code>if (this.value != this.lastValue) {</code></pre>
+
+<p>Only run the check if the username has actually changed &#8211; also means we skip meta keys.</p>
+
+<pre><code>if (this.timer) clearTimeout(this.timer);</code></pre>
+
+<p>The timeout logic means the ajax doesn&#8217;t fire with <em>every</em> key press, i.e. if the user holds down a particular key, it will only fire when the release the key.</p>
+
+<pre><code>validateUsername.removeClass('error').html('&lt;img src=&quot;images/ajax-loader.gif&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt; checking availability...');</code></pre>
+
+<p>Show our holding text in the validation message space.</p>
+
+<pre><code>this.timer = setTimeout(function () {</code></pre>
+
+<p>Fire an ajax request in 1/5 of a second.</p>
+
+<pre><code>$.ajax({
+  url: 'ajax-validation.php',
+  data: 'action=check_username&#038;username=' + t.value,
+  dataType: 'json',
+  type: 'post',
+  success: function (j) {
+    validateUsername.html(j.msg);
+  }
+});
+</code></pre>
+
+<p>The actual Ajax request.  If the script <code>ajax-validation.php</code> returns any response, convert it to JSON and put the &#8216;msg&#8217; field in to the validation message.</p>
+
+<p>The fields are set in the PHP server response.  You can see this working in the demo, and <a href="source/ajax-validation.php.html">view the source</a>, in particular look at the $resp array from check_username.</p>
+
+<pre><code>this.lastValue = this.value;</code></pre>
+
+<p>Finally, put the current value in to a cache, to make sure we ignore meta keys (from above).</p>
+
+<h3>Server response</h3>
+
+<p>Now all I have to add to the PHP code, that already handles normal username validation is:</p>
+
+<pre><code>if (@$_REQUEST['action'] == 'check_username' &#038;&#038; isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+    echo json_encode(check_username($_REQUEST['username']));
+    exit; // only print out the json version of the response
+}</code></pre>
+
+<p>So long as this is high enough in the logic, it will just check the username is valid, using our existing function and convert the response to a JSON object (you may need to add <a href="http://uk2.php.net/json">JSON support for PHP</a>, otherwise it&#8217;s bundled with PHP 5.2.0).</p>
+
+<h2>Example &amp; taking it further</h2>
+
+<p>In the example I&#8217;ve provided, I&#8217;ve also shown how we can add JavaScript to a normally coded page to also validate the user providing an avatar URL.</p>
+
+<ul>
+<li><a href="demo/ajax-validation.php.html">Full example of username and avatar validation</a></li>
+<li><a href="demo/ajax-validation.php%3Fnojs.html">Same example with JavaScript removed</a></li>
+<li><a href="source/ajax-validation.php.html">Source code to example</a></li>
+</ul>
+                <p class="follow">You should follow me on Twitter <a href="http://twitter.com/rem">here</a> <span class="note">I tweet about jQuery amongst the usual tweet-splurges!</span></p>
+                
+                

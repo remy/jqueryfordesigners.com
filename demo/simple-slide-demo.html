@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Slide Demo - Fixed Drawer</title>
+    <style type="text/css" media="screen">
+    <!--
+    BODY { margin: 10px; padding: 0; font: 1em "Trebuchet MS", verdana, arial, sans-serif; font-size: 100%; }
+    H2 { font-size: 100%;}
+    UL.drawers {
+        width: 250px;
+    }
+    
+    UL {
+        list-style: none;
+        margin: 0;
+        padding: 5px;
+    }
+    
+    LI A {
+        text-decoration: none;
+        color: #666;
+    }
+    
+    H2.drawer-handle {
+        margin: 0;
+        padding: 5px;
+        background-color: #e5e5e5;
+    }
+    
+    H2.drawer-handle.open {
+        background-color: #4E64A5;
+    }
+        
+    -->
+    </style>
+
+    <script src="jquery-1.2.1.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+    <!--    
+    $(document).ready(function () {
+      $('LI.drawer UL:not(:first)').hide(); // hide all ULs inside LI.drawer except the first one
+      $('H2.drawer-handle').click(function () {
+        // hide all the drawer contents
+        $('LI.drawer UL:visible').slideUp().prev().removeClass('open');
+
+        // show the associated drawer content to 'this' (this is the current H2 element)
+        // since the drawer content is the next element after the clicked H2, we find
+        // it and show it using this:
+        $(this).addClass('open').next().slideDown();
+      });
+    });
+    //-->    </script>
+</head>
+<body id="page">
+    <h1>Simple jQuery slide out demo</h1>
+    <p>This example demonstrates a simplistic version of the Apple downloads slider/accordion effect using only a few lines of jQuery.</p>
+    <p>Click on the headings to reveal the list of available links.</p>
+    
+    <p><a href="../index.html%3Fp=7.html">Read the article this demonstration relates to</a></p>
+    <div class="drawers-wrapper">
+	<div class="boxcap captop"></div>
+    <ul class="drawers">
+        <li class="drawer">
+            <h2 class="drawer-handle open">Downloads</h2>
+            <ul class="alldownloads">
+                <li id="sn-downloadsmacosx"><a href="http://jqueryfordesigners.com/downloads/macosx/">All Categories</a></li>
+                <li id="sn-aperture"><a href="http://jqueryfordesigners.com/downloads/macosx/aperture/">Aperture</a></li>
+                <li id="sn-apple"><a href="http://jqueryfordesigners.com/downloads/macosx/apple/">Apple</a></li>
+                <li id="sn-audio"><a href="http://jqueryfordesigners.com/downloads/macosx/audio/">Audio</a></li>
+                <li id="sn-automator"><a href="http://jqueryfordesigners.com/downloads/macosx/automator/">Automator Actions</a></li>
+                <li id="sn-businessfinance"><a href="http://jqueryfordesigners.com/downloads/macosx/business_finance/">Business &amp; Finance</a></li>
+                <li id="sn-calendars"><a href="http://jqueryfordesigners.com/downloads/macosx/calendars/">Calendars</a></li>
+                <li id="sn-developmenttools"><a href="http://jqueryfordesigners.com/downloads/macosx/development_tools/">Development Tools</a></li>
+                <li id="sn-drivers"><a href="http://jqueryfordesigners.com/downloads/macosx/drivers/">Drivers</a></li>
+                <li id="sn-emailchat"><a href="http://jqueryfordesigners.com/downloads/macosx/email_chat/">Email &amp; Chat</a></li>
+                <li id="sn-finalcutstudio"><a href="http://jqueryfordesigners.com/downloads/macosx/finalcutstudio/">Final Cut Studio</a></li>
+                <li id="sn-games"><a href="http://jqueryfordesigners.com/downloads/macosx/games/">Games</a></li>
+                <li id="sn-homelearning"><a href="http://jqueryfordesigners.com/downloads/macosx/home_learning/">Home &amp; Learning</a></li>
+                <li id="sn-iconsscreensavers"><a href="http://jqueryfordesigners.com/downloads/macosx/icons_screensavers/">Icons, Screensavers, etc.</a></li>
+                <li id="sn-imaging3d"><a href="http://jqueryfordesigners.com/downloads/macosx/imaging_3d/">Imaging &amp; 3D</a></li>
+                <li id="sn-internetutilities"><a href="http://jqueryfordesigners.com/downloads/macosx/internet_utilities/">Internet Utilities</a></li>
+                <li id="sn-ipoditunes"><a href="http://jqueryfordesigners.com/downloads/macosx/ipod_itunes/">iPod + iTunes</a></li>
+                <li id="sn-mathscience"><a href="http://jqueryfordesigners.com/downloads/macosx/math_science/">Math &amp; Science</a></li>
+                <li id="sn-networkingsecurity"><a href="http://jqueryfordesigners.com/downloads/macosx/networking_security/">Networking &amp; Security</a></li>
+                <li id="sn-productivitytools"><a href="http://jqueryfordesigners.com/downloads/macosx/productivity_tools/">Productivity Tools</a></li>
+                <li id="sn-spotlight"><a href="http://jqueryfordesigners.com/downloads/macosx/spotlight/">Spotlight Plugins</a></li>
+                <li id="sn-systemdiskutilities"><a href="http://jqueryfordesigners.com/downloads/macosx/system_disk_utilities/">System/Disk Utilities</a></li>
+                <li id="sn-unixopensource"><a href="http://jqueryfordesigners.com/downloads/macosx/unix_open_source/">UNIX &amp; Open Source</a></li>
+                <li id="sn-video"><a href="http://jqueryfordesigners.com/downloads/macosx/video/">Video</a></li>
+                <li id="sn-dashboard"><a href="http://jqueryfordesigners.com/downloads/dashboard/" class="bottom">Widgets</a></li>
+            </ul>
+        </li>
+        <li class="drawer">
+            <h2 class="drawer-handle">Top Downloads</h2>
+            <ul>
+                <li><a title="iTunes 7.5" href="http://www.apple.com/itunes/download/">1. iTunes 7.5</a></li>
+                <li><a title="QuickTime 7.3.1" href="http://www.apple.com/quicktime/download/">2. QuickTime 7.3.1</a></li>
+                <li><a title="Safari 3 Public Beta" href="http://www.apple.com/safari/download/">3. Safari 3 Public Beta</a></li>
+                <li><a title="MacPool" href="http://jqueryfordesigners.com/downloads/macosx/games/simulation_and_sports/macpool.html">4. MacPool Realistic and easy to play computer simu…</a></li>
+                <li><a title="Guitar Hero III: Legends of Rock" href="http://jqueryfordesigners.com/downloads/macosx/games/demos_updates/guitarheroiiilegendsofrock.html">5. Guitar Hero III: L…</a></li>
+                <li><a title="Messenger for Mac" href="http://jqueryfordesigners.com/downloads/macosx/email_chat/messengerformac.html">6. Messenger for Mac</a></li>
+                <li><a title="Google Earth" href="http://jqueryfordesigners.com/downloads/macosx/home_learning/googleearth.html">7. Google Earth</a></li>
+                <li><a title="Monopoly" href="http://jqueryfordesigners.com/downloads/macosx/games/cards_puzzle/monopoly.html">8. Monopoly</a></li>
+                <li><a title="Litho System Icons" href="http://jqueryfordesigners.com/downloads/macosx/icons_screensavers/lithosystemicons.html">9. Litho System Icons</a></li>
+                <li><a title="Battlefield 2142" href="http://jqueryfordesigners.com/downloads/macosx/games/demos_updates/battlefield2142.html">10. Battlefield 2142</a></li>
+                <li><a title="More iChat Effects" href="http://jqueryfordesigners.com/downloads/macosx/email_chat/moreichateffects.html">11. More iChat Effects</a></li>
+                <li><a title="Dragster" href="http://jqueryfordesigners.com/downloads/macosx/internet_utilities/dragster.html">12. Dragster</a></li>
+                <li><a title="iSquint" href="http://jqueryfordesigners.com/downloads/macosx/ipod_itunes/isquint.html">13. iSquint</a></li>
+                <li class="last"><a title="US Holiday Calendar" href="http://jqueryfordesigners.com/downloads/macosx/calendars/usholidaycalendar.html">14. US Holiday Calendar</a></li>
+            </ul>
+        </li>
+        <li class="drawer last">
+            <h2 class="drawer-handle">Top Apple Downloads</h2>
+            <ul>
+                <li><a title="iTunes 7.5" href="http://www.apple.com/itunes/download/">1. iTunes 7.5</a></li>
+                <li><a title="QuickTime 7.3.1" href="http://www.apple.com/quicktime/download/">2. QuickTime 7.3.1</a></li>
+                <li><a title="Safari 3 Public Beta" href="http://www.apple.com/safari/download/">3. Safari 3 Public Beta</a></li>
+                <li><a title="Mac OS X 10.5.1 Update" href="http://jqueryfordesigners.com/downloads/macosx/apple/macosx_updates/macosx1051update.html">4. Mac OS X 10.5.1 Up…</a></li>
+                <li><a title="Java for Mac OS X 10.4 Release 5" href="http://jqueryfordesigners.com/downloads/macosx/apple/macosx_updates/javaformacosx104release5.html">5. Java for Mac OS X …</a></li>
+                <li><a title="iPod Reset Utility 1.0.2 for Windows" href="http://jqueryfordesigners.com/downloads/macosx/apple/ipod_itunes/ipodresetutility102forwindows.html">6. iPod Reset Utility…</a></li>
+                <li><a title="iPhoto 7.1.1" href="http://jqueryfordesigners.com/downloads/macosx/apple/application_updates/iphoto711.html">7. iPhoto 7.1.1</a></li>
+                <li><a title="Bonjour for Windows" href="http://jqueryfordesigners.com/downloads/macosx/apple/windows/bonjourforwindows.html">8. Bonjour for Windows</a></li>
+                <li><a title="Mac OS X 10.4.11 Combo Update (PPC)" href="http://jqueryfordesigners.com/downloads/macosx/apple/macosx_updates/macosx10411comboupdateppc.html">9. Mac OS X 10.4.11 C…<br/>The 10.4.11 Update is recommended for al…</a></li>
+                <li><a title="Java for Mac OS X 10.4, Release 6" href="http://jqueryfordesigners.com/downloads/macosx/apple/macosx_updates/javaformacosx104release6.html">10. Java for Mac OS X …</a></li>
+                <li><a title="GarageBand 4.1.1" href="http://jqueryfordesigners.com/downloads/macosx/apple/application_updates/garageband411.html">11. GarageBand 4.1.1</a></li>
+                <li><a title="iPod Updater 2006-06-28 for Windows" href="http://jqueryfordesigners.com/downloads/macosx/apple/ipod_itunes/ipodupdater20060628forwindows.html">12. iPod Updater 2006-…</a></li>
+                <li><a title="Security Update 2007-009 1.1 (10.4.11 Universal)" href="http://jqueryfordesigners.com/downloads/macosx/apple/security_updates/securityupdate20070091110411universal.html">13. Security Update 20…</a></li>
+                <li class="last"><a title="Security Update 2007-009 1.1 (10.5.1)" href="http://jqueryfordesigners.com/downloads/macosx/apple/security_updates/securityupdate2007009111051.html">14. Security Update 20…</a></li>
+            </ul>
+        </li>
+    </ul>
+	<div class="boxcap"></div>
+	</div>
+</body>
+</html>

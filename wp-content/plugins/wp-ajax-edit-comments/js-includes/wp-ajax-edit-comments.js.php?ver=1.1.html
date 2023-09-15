@@ -1,0 +1,398 @@
+jQuery(document).ready(function(){
+   AjaxEditComments.init();
+	 
+});
+var AjaxEditComments = function() {
+	var $j = jQuery;
+	var timers = new Array();
+	var PluginUrl = "http://jqueryfordesigners.com/wp-content/plugins/wp-ajax-edit-comments";
+	var CommentAuthorName = "editAuthor";
+	var CommentClassName = "editComment";
+	var EditCommentAuthorName = "editableAuthor"; //not edible author :)
+	var EditCommentClassName = "editableComment";
+	var TextAuthorClassName = "textAuthor";
+	var TextCommentClassName = "textComment";
+	//Scans the spans and divs for a specific class and sets events to make them editable
+	function MakeEdit() {
+		StopEdit();
+		//Make the Author portions editable
+		$j('.' + CommentAuthorName).bind("mouseover",function() {ShowAsEditable($j(this));});
+		$j('.' + CommentAuthorName).bind("mouseout",function() {ShowAsUnEditable($j(this));});
+		$j('.' + CommentAuthorName).bind("click",function() {Edit($j(this)); return false;});
+		//Make the comment portions editable
+		$j('.' + CommentClassName).bind("mouseover",function() {ShowAsEditable($j(this));});
+		$j('.' + CommentClassName).bind("mouseout",function() {ShowAsUnEditable($j(this));});
+		$j('.' + CommentClassName).bind("click",function(ev) {
+		    // RS change
+		    if (ev.target.nodeName == 'A') {
+		        return true;
+		    } 
+		    
+		    Edit($j(this)); return false;
+		});
+				//Remove the extra classes
+		$j('.' + CommentClassName).removeClass("post");
+		$j('.' + CommentClassName).removeClass("admin");
+		$j('.' + CommentAuthorName).removeClass("post");
+		$j('.' + CommentAuthorName).removeClass("admin");
+		
+		GetEditText();
+		AddAdminLinks();
+	}
+	//Disable all the edit events
+	function StopEdit() {
+		$j('.' + CommentAuthorName).unbind();
+		$j('.' + CommentClassName).unbind();
+		$j("." + 'ajax-admin-edit-links').unbind();
+	}
+	//Adds in the admin links and sets up the events
+	function AddAdminLinks() {
+		$j("." + 'ajax-admin-edit-links').each(function() { // Adds Edit | Delete | Spam functionality
+			var id = $j(this).attr("id");
+			var element = $j(this);
+			var option = id.match(/([a-zA-Z]+)/i)[1];
+			var id = GetId(id);
+			if (option == "edit") {
+			element.bind("click", function() { Edit($j("#" + CommentClassName + id));Edit($j("#" + CommentAuthorName + id)); return false; });
+			} else if (option == "delete")  {
+				element.bind("click", function() { if (confirm("Delete this comment?")) { DeleteSpamComment(option, id);} return false;})
+			} else if (option == "spam") { 
+				element.bind("click", function() { if (confirm("Mark this comment as Spam?")) { DeleteSpamComment(option, id);   } return false;})
+			} 
+		});
+    $j("." + 'ajax-akismet-links').each(function() { //Adds Akismet functionality
+			var id = $j(this).attr("id");
+			var element = $j(this);
+			var option = id.match(/([a-zA-Z]+)/i)[1];
+			var id = GetId(id);
+			if (option == "unspam") {
+				element.bind("click", function() { DeleteSpamComment(option, id); return false;})
+			} 
+		});
+		$j("." + "ajax-admin-edit-paragraph").show();
+	}
+	//Deletes or Marks a comment as spam
+	//Option = "delete" or "spam"| id is the comment ID
+	function DeleteSpamComment(option, id) {
+		$j.ajax({
+			type: "post",
+			url: PluginUrl + '/php-includes/AjaxEditComments.php',
+			timeout: 30000,
+			global: false,
+			data: {
+				CommentOption: option,
+				CommentId: id,
+				_wpnonce:"f81d1b235685887e98e32e2d650372de"},
+			success: function(msg) { DeleteSpamCommentComplete(msg, id); },
+			error: function(msg) { DeleteSpamCommentFailure(msg, id); }
+		})
+	}
+	//Outputs the edit text
+	function GetEditText() {
+		//Output edit text
+		$j("." + "ajax-edit").html('You may click on your name and/or comment to edit.');
+		GetTimeLeft();		
+	}
+  //Finds the time left for editing comments
+	function GetTimeLeft() {
+		$j("." + "ajax-edit").each(function() {
+			var text = $j(this).attr("id");
+			var element = $j(this);
+			$j.ajax({
+					type: "post",
+					url: PluginUrl + '/php-includes/AjaxEditComments.php',
+					timeout: 30000,
+					global: false,
+					data: {LoadTimeId: $j(this).attr("id"),
+					_wpnonce:"f9e5903defa3135162cbf17a75d0899c"},
+					success: function(msg) { LoadTimeComplete(msg, text, element); }
+				})
+		});
+	}
+	//Allows the comment and author areas to be editable
+	//obj - The object that triggered the event
+	function Edit(obj) {
+		if (obj.is("span")) {
+			//Create a new span element to replace the author span
+			if ($j('body').find('#' + TextAuthorClassName + obj.attr("id")).is("span")) { return; } //Return if the span has already been created
+			var newSpan = '<span class="' + TextAuthorClassName + '" id="' + TextAuthorClassName + obj.attr("id") + '">'
+				
+			//if url and name both return zero matches, use innerHTML as is.
+			var url = obj.html().match(/href=\"([^"]*)\"/i);
+			if (url == undefined) { url = obj.html().match(/href=\'([^']*)\'/i)	}
+			if (url == undefined) {
+				url = '';
+				name = obj.html();
+			} else {
+				url = url[1];
+				name = obj.html().match(/>([^<]*)<\/a>/i)[1];
+			}
+			
+			var authorInputBox = '<label for="' + obj.attr("id") + '_URL">URL: </label><input type="text" class="authorURL" id="' + obj.attr("id") + '_URL" value="' + url + '" /><label for="' + obj.attr("id") + '_author"> Name: </label><input type="text" id="' + obj.attr("id") + '_author" class="authorInput" value=\'' + name + '\' />&nbsp;&nbsp;';
+			var authorButtons = '<input type="button" value="Save" id="' + obj.attr("id") + '_saveAuthor" /> or <input type="button" value="Cancel" id="' + obj.attr("id") + '_cancelAuthor" />';
+			newSpan = newSpan + authorInputBox + authorButtons + "</span>";
+			
+			//Hide the old span
+			obj.hide();
+			obj.before(newSpan);
+			
+			//Setup save and cancel button events
+			var saveButton = $j("#" + obj.attr("id") + "_saveAuthor");
+			var cancelButton = $j("#" + obj.attr("id") + "_cancelAuthor");
+			saveButton.click(function() { AuthorSave($j(this), obj, $j("#" + TextAuthorClassName + obj.attr("id"))); });
+			cancelButton.click(function() { EditCancel($j(this), obj, $j("#" + TextAuthorClassName + obj.attr("id"))); });
+			//Setup the events for the input boxes
+			$j("#" + obj.attr("id") + '_URL').keypress(function() { EnableSave(saveButton) });
+			$j("#" + obj.attr("id") + '_author').keypress(function() { EnableSave(saveButton) });
+			
+		} else if (obj.is("div")) {
+			if ($j('body').find('#' + TextCommentClassName + obj.attr("id")).is("div")) { return; } //Return if the textarea has already been created
+			var newDiv = '<div class="' + TextCommentClassName + '" id="' + TextCommentClassName + obj.attr("id") + '">';
+			//Create the input box and buttons
+			var textarea = '<textarea id="' + obj.attr("id") + '_edit" name="' + obj.attr("id") + '">Loading comment...</textarea>';
+			var commentButtons = '<p class="ajax-save-buttons" id="' + obj.attr("id") + '_saveCommentButtons"><input type="button" value="Save" id="' + obj.attr("id") + '_saveComment" /> or <input type="button" value="Cancel" id="' + obj.attr("id") + '_cancelComment" /></p>';
+							
+			newDiv = newDiv + textarea + commentButtons + "</div>";
+			//Hide the old span and show the new one
+			obj.hide();
+			obj.before(newDiv);
+			var newDiv = $j("#" + TextCommentClassName + obj.attr("id"));
+			//Setup save and cancel button events
+			var saveCommentButtons = $j("#" + obj.attr("id") + "_saveCommentButtons").hide();
+			var saveButton = $j("#" + obj.attr("id") + "_saveComment");
+			var cancelButton = $j("#" + obj.attr("id") + "_cancelComment");
+			saveButton.click(function() { CommentSave($j(this), obj, newDiv); });
+			cancelButton.click(function() { EditCancel($j(this), obj, newDiv); });
+			//Setup the event for the textarea
+			$j("#" + obj.attr("id") + '_edit').keypress(function() { EnableSave(saveButton) });
+			
+			//Load the comment
+			$j.ajax({
+				type: "post",
+				url: PluginUrl + '/php-includes/AjaxEditComments.php',
+				timeout: 30000,
+				global: false,
+				data: {GetCommentId: obj.attr("id"),_wpnonce:"77562d7685d4102bc1d61a679974a33e"},
+				success: function(msg) { LoadCommentComplete(msg, obj.attr("id"), saveCommentButtons, obj, newDiv); },
+				error: function(msg) { LoadCommentFailure(msg, obj.attr("id"), obj, newDiv);}
+			})
+			
+		} 
+	}
+	//Returns a match if valid (i.e., you pass it editComment45, it returns 45) 
+	function GetId(id) { 
+		return id.match(/([0-9]+)/i)[1];
+	}
+	//Changes the classname of the span/div so that it appears editable
+	function ShowAsEditable(obj) {
+		if (obj.attr("class") == CommentAuthorName) {
+			obj.attr("class", EditCommentAuthorName);
+		} else if (obj.attr("class") == CommentClassName) {
+			obj.attr("class", EditCommentClassName);			
+		}
+	}
+	//Changes the classname of the span/div so that it appears uneditable
+	function ShowAsUnEditable(obj) {
+		if (obj.attr("class") == EditCommentAuthorName) {
+			obj.attr("class", CommentAuthorName)
+		} else if (obj.attr("class") == EditCommentClassName) {
+			obj.attr("class", CommentClassName)		
+		}
+	}
+	//Saves the Author Data to the Database
+	//saveButton - The save button
+	//oldSpan - The element to show saved information
+	//newSpan - The element to retreive saved information
+	//display - The display type of the oldspan
+	function AuthorSave(saveButton, oldSpan, newSpan) {
+		var url = $j("#" + oldSpan.attr("id") + "_URL");
+		var author = $j("#" + oldSpan.attr("id") + "_author");
+		saveButton.attr("value", "Saving...");
+		saveButton.attr("disabled", "disabled");
+		//Check for empty url or author values
+		if (author.attr("value") == undefined) { SaveAuthorFailure('', saveButton); return; }
+		urlValue = url.attr("value");
+		if (urlValue == undefined) { urlValue = ""; }
+		authorValue = $j.trim(author.attr("value"));
+		if (authorValue == '') { SaveAuthorFailure('', saveButton); return; }
+		
+		$j.ajax({
+				type: "post",
+				url: PluginUrl + '/php-includes/AjaxEditComments.php',
+				timeout: 30000,
+				global: false,
+				data: {SaveAuthorCommentId: oldSpan.attr("id"),
+				AuthorURL: encodeURIComponent(urlValue),
+				AuthorName: encodeURIComponent(authorValue),
+				_wpnonce:"8b1074e58aa3b9727e5a5450c6628420"},
+				success: function(msg) { SaveAuthorComplete(msg, saveButton, oldSpan, newSpan) },
+				error: function(msg) { SaveAuthorFailure(msg, saveButton)}
+			})
+	}
+	//Cancels an Edit
+	//evt - The event object
+	//obj1 - The element to show
+	//obj2 - The element to destroy
+	function EditCancel(cancelButton, obj1, obj2) {
+		obj2.remove();
+		obj1.show();
+	}
+	//Saves the comment data to the database
+	//saveButton - The save button
+	//oldDiv - The original argument
+	function CommentSave(saveButton, oldDiv, newDiv) {
+		var textarea = $j("#" + oldDiv.attr("id") + "_edit");
+		saveButton.attr("value", "Saving...");
+		saveButton.attr("disabled", "disabled");
+		if (textarea.attr("value") == undefined) { SaveCommentFailure("", saveButton); return; }
+		if ($j.trim(textarea.attr("value")) == '') { SaveCommentFailure('', saveButton); return; }
+		$j.ajax({
+				type: "post",
+				url: PluginUrl + '/php-includes/AjaxEditComments.php',
+				timeout: 30000,
+				global: false,
+				data: {SaveCommentId: oldDiv.attr("id"),
+				SaveContent: encodeURIComponent(textarea.attr("value")),
+				_wpnonce:"0e1c4b37eb3a7cef275da84690165ed9"},
+				success: function(msg) { SaveCommentComplete(msg, saveButton, oldDiv, newDiv) },
+				error: function(msg) { SaveCommentFailure(msg, saveButton)}
+			})
+	}
+	//Enables the save button passed to it and restores the default value
+	function EnableSave(saveButton) {
+		saveButton.removeClass("ajax-error");
+		saveButton.removeAttr("disabled");
+		saveButton.attr("value", "Save");
+	}
+	function LoadTimeComplete(msg, id, element) {
+		var p = element;
+		var minSecs = msg.split(",", 2);
+		var minutes = minSecs[0];
+		var seconds = minSecs[1];
+		if (p.index($j("#" + 'time' + id)) < 0) {
+			p.html(p.html() + '<span id="time' + id + '" class="ajax-timer"></span>');
+		}
+		var secs = minutes * 60 + seconds - 1;
+		if (timers[id] != undefined) {
+			clearTimeout(timers[id]);
+		}
+		var time = setTimeout(function() {LoadTimeSubtract(time, p, id, minutes, seconds, secs ) }, 1000);
+		timers[id] = time;
+	}
+	//t = The time variable | p = the paragraph that contains the time
+	//id = The HTML element ID to put the minutes and seconds
+	//minutes = the minutes | seconds = the seconds | totalSeconds = total seconds
+	function LoadTimeSubtract(t, p, id, minutes, seconds, totalSeconds ) {
+		seconds -= 1;
+		if (minutes <=0 && seconds <= 0) { //Time has run out
+			var regex = /(\d+)$/;
+			if (regex.test(id)) {
+				id = id.match(regex)[1];
+				$j("#" + CommentAuthorName +  id).unbind();
+				$j("#" + CommentClassName +  id).unbind();
+			}	
+			p.remove();
+			clearTimeout(t)
+			return;
+		}
+		if (seconds < 0) { minutes -= 1; seconds = 59; }
+		var text = "";
+		if (minutes >= 1) {
+			if (minutes >= 2) { text = " " + minutes + " minutes"; } else { text = minutes + " minute"; }
+			if (seconds > 0) { text += " and "; }
+		}
+		if (seconds > 0) {
+			if (seconds >= 2) { text += seconds + " seconds"; } else { text += seconds + " second"; }
+		}
+ 
+				$j('#time' + id).html("&nbsp;&nbsp;(" + text + ")");
+		totalSeconds -= 1;
+		if (timers[id] != undefined) {
+			clearTimeout(timers[id]);
+		}
+		var time = setTimeout(function() { LoadTimeSubtract(t, p, id, minutes, seconds, totalSeconds ) }, 1000);
+		timers[id] = time;
+	}
+	function LoadCommentComplete(msg, id, commentButtons, obj1, obj2) {	
+		var textBox = $j("#" + id + "_edit");
+		if (msg == 0) {
+				LoadCommentFailure(msg, id, obj1, obj2);
+				return;
+		}
+		textBox.attr("value", msg);
+		commentButtons.show();
+	}
+	function LoadCommentFailure(msg, id, obj1, obj2) {
+		var textBox = $j("#" + id + "_edit");
+		textBox.attr("value", "Load Comment Failed");
+		textBox.addClass("ajax-error");
+		obj2.children().hide();
+		textBox.show();
+		obj2.fadeOut(3000, function() { EditCancel('', obj1, obj2);});
+	}
+	function SaveCommentComplete(msg, saveButton, oldDiv, newDiv) {
+		if (msg == "0") { 		
+			SaveCommentFailure(msg, saveButton);
+			return;
+		}
+		//Check for the existence of a spam message
+		var regex = /^(spam)/;
+		if (regex.test(msg)) {
+			id = GetId(oldDiv.attr("id"));
+			msg = msg.substring(4, msg.length -1);
+			$j("#" + CommentAuthorName +  id).unbind();
+			$j("#" + CommentClassName +  id).unbind();
+			oldDiv.html(msg).show(); newDiv.remove();
+			return;
+		}
+		
+		oldDiv.html(msg).show();
+		newDiv.remove();
+
+		MakeEdit();
+	}
+	function SaveCommentFailure(msg, saveButton) {
+		saveButton.attr("value", "Saving Comment Failed");
+		saveButton.addClass("ajax-error");
+	}
+	function SaveAuthorComplete(msg, saveButton, obj1, obj2) {
+		if (msg == "0") { 
+			SaveAuthorFailure(msg, saveButton);
+			return;
+		}
+		var regex = /^(spam)/;
+		if (regex.test(msg)) {
+			id = GetId(obj1.attr("id"));
+			msg = msg.substring(4, msg.length -1);
+			$j("#" + CommentAuthorName +  id).unbind();
+			$j("#" + CommentClassName +  id).unbind();
+			obj1.html(msg).show(); obj2.remove();
+			return;
+		}		
+		obj1.html(msg);
+		obj1.show();
+		obj2.remove();
+	}
+	function SaveAuthorFailure(msg, saveButton) {
+		saveButton.attr("value", "Saving Author Failed");
+		saveButton.addClass("ajax-error");
+	}
+	function DeleteSpamCommentComplete(msg, id) {
+	 if (msg != "1") { DeleteSpamCommentFailure(msg); return; }
+		var li = $j("#" + "comment-" + id);
+		if (li.is("li") || li.is("div") ) {
+			li.removeClass();
+			li.addClass("ajax-error");
+			li.slideUp(1000, function() { li.remove(); });
+		}
+	}
+	function DeleteSpamCommentFailure(msg, id) {
+		alert(msg);
+	}
+	return {
+			init : function() { //AKA the constructor - Plugin authors can tap into the plugin by calling AjaxEditComments.init()
+				MakeEdit();
+			}
+	};
+	
+}();

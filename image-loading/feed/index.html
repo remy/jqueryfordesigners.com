@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: Image Loading</title>
+	<atom:link href="http://jqueryfordesigners.com/image-loading/feed/" rel="self" type="application/rss+xml" />
+	<link>http://jqueryfordesigners.com/image-loading/</link>
+	<description>Tutorials and screencasts</description>
+	<lastBuildDate>Thu, 22 Sep 2011 12:58:42 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.3.1</generator>
+	<item>
+		<title>By: DJ Vermeulen</title>
+		<link>http://jqueryfordesigners.com/image-loading/comment-page-4/#comment-7884</link>
+		<dc:creator>DJ Vermeulen</dc:creator>
+		<pubDate>Fri, 02 Apr 2010 13:15:45 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/image-loading/#comment-7884</guid>
+		<description>&lt;p&gt;Thanx. The tutorial worked great on my images, but i&#039;ve got a flash (.swf) file that needs to load as well. This script doesn&#039;t seem to work on that or how must the code be changed to accommoodate a loading flash file.&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Thanx. The tutorial worked great on my images, but i&#8217;ve got a flash (.swf) file that needs to load as well. This script doesn&#8217;t seem to work on that or how must the code be changed to accommoodate a loading flash file.</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ben Lacey</title>
+		<link>http://jqueryfordesigners.com/image-loading/comment-page-4/#comment-7862</link>
+		<dc:creator>Ben Lacey</dc:creator>
+		<pubDate>Sat, 27 Mar 2010 01:51:12 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/image-loading/#comment-7862</guid>
+		<description>&lt;p&gt;Very nice article, I follow your JQuery iPod podcasts and I&#039;m always very impressed with the stuff you put together. &lt;/p&gt;
+
+&lt;p&gt;I find JQuery to be really lightweight and a very useful framework for JavaScript awesomeness.
+Keep up the good work!&lt;/p&gt;
+
+&lt;p&gt;Ben Lacey (Lacey Tech Solutions)&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Very nice article, I follow your JQuery iPod podcasts and I&#8217;m always very impressed with the stuff you put together. </p>
+
+<p>I find JQuery to be really lightweight and a very useful framework for JavaScript awesomeness.
+Keep up the good work!</p>
+
+<p>Ben Lacey (Lacey Tech Solutions)</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kevin Crawford</title>
+		<link>http://jqueryfordesigners.com/image-loading/comment-page-4/#comment-7765</link>
+		<dc:creator>Kevin Crawford</dc:creator>
+		<pubDate>Mon, 01 Mar 2010 14:39:49 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/image-loading/#comment-7765</guid>
+		<description>&lt;p&gt;Sorry for the double-post, but after the same request from Estevan I decided to tackle it myself!&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;div id=&quot;loader&quot; class=&quot;loading&quot;&amp;rt;
+    &lt;img src=&quot;image.gif&quot; /&amp;rt;
+&lt;/div&amp;rt;
+
+$(function() {
+    $(&#039;#loader img&#039;).hide().load(function() {
+        $(&#039;#loader&#039;).removeClass(&#039;loading&#039;);
+        $(this).fadeIn();
+    });
+
+    // This makes it work, even when the image is cached
+    var src = $(&#039;#loader img&#039;).attr(&#039;src&#039;); // Stores original src from HTML as a variable
+   $(&#039;#loader img&#039;).attr(&#039;src&#039;, &#039;&#039;) // Set&#039;s source to empty string
+   $(&#039;#loader img&#039;).attr(&#039;src&#039;, src) // Sets it back to the old value
+
+    // BELOW IS AN ALTERNATIVE WAY TO MAKE IT WORK FOR CACHED IMAGES
+    $(&#039;#loader img&#039;).hide();
+    $(window).load( function() {
+        $(&#039;#loader&#039;).removeClass(&#039;loading&#039;);
+        $(&#039;#loader img&#039;).fadeIn(&#039;slow&#039;);
+    });
+});
+&lt;/pre&gt;
+
+&lt;p&gt;I only tested the two solutions in FireFox, so I&#039;m not entirely sure how well it will work cross-browser. Hope it helps someone.&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Sorry for the double-post, but after the same request from Estevan I decided to tackle it myself!</p>
+
+<pre>
+&lt;div id="loader" class="loading"&rt;
+    &lt;img src="image.gif" /&rt;
+&lt;/div&rt;
+
+$(function() {
+    $('#loader img').hide().load(function() {
+        $('#loader').removeClass('loading');
+        $(this).fadeIn();
+    });
+
+    // This makes it work, even when the image is cached
+    var src = $('#loader img').attr('src'); // Stores original src from HTML as a variable
+   $('#loader img').attr('src', '') // Set's source to empty string
+   $('#loader img').attr('src', src) // Sets it back to the old value
+
+    // BELOW IS AN ALTERNATIVE WAY TO MAKE IT WORK FOR CACHED IMAGES
+    $('#loader img').hide();
+    $(window).load( function() {
+        $('#loader').removeClass('loading');
+        $('#loader img').fadeIn('slow');
+    });
+});
+</pre>
+
+<p>I only tested the two solutions in FireFox, so I&#8217;m not entirely sure how well it will work cross-browser. Hope it helps someone.</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kevin Crawford</title>
+		<link>http://jqueryfordesigners.com/image-loading/comment-page-4/#comment-7764</link>
+		<dc:creator>Kevin Crawford</dc:creator>
+		<pubDate>Mon, 01 Mar 2010 13:39:56 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/image-loading/#comment-7764</guid>
+		<description>&lt;p&gt;Would it be possible to include the  tag in the original markup, hide it initially with CSS or javascript (and thus displaying the spinner BG behind it instead), and fade it in once it has loaded, using load()? That way you wouldn&#039;t have to define the &quot;src&quot; attribute in the javascript, and it would make it unobtrusive.&lt;/p&gt;
+
+&lt;p&gt;Although, I suppose for some more advanced applications of this concept, the src would need to be originate dynamically from the javascript anyways =D&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Would it be possible to include the  tag in the original markup, hide it initially with CSS or javascript (and thus displaying the spinner BG behind it instead), and fade it in once it has loaded, using load()? That way you wouldn&#8217;t have to define the &#8220;src&#8221; attribute in the javascript, and it would make it unobtrusive.</p>
+
+<p>Although, I suppose for some more advanced applications of this concept, the src would need to be originate dynamically from the javascript anyways =D</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kyle</title>
+		<link>http://jqueryfordesigners.com/image-loading/comment-page-4/#comment-7257</link>
+		<dc:creator>Kyle</dc:creator>
+		<pubDate>Mon, 18 Jan 2010 12:18:23 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/image-loading/#comment-7257</guid>
+		<description>&lt;p&gt;Hi,&lt;/p&gt;
+
+&lt;p&gt;First and foremost this is a great piece of work you have provided us with, thanks very much.&lt;/p&gt;
+
+&lt;p&gt;I was wondering if you could or someone could help me with one problem Im having, I cant get the image fade to work on this page http://kylehouston.com/new/index_new.html everything else works fine.&lt;/p&gt;
+
+&lt;p&gt;Thanks in advance&lt;/p&gt;
+
+&lt;p&gt;Kyle&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Hi,</p>
+
+<p>First and foremost this is a great piece of work you have provided us with, thanks very much.</p>
+
+<p>I was wondering if you could or someone could help me with one problem Im having, I cant get the image fade to work on this page <a href="http://kylehouston.com/new/index_new.html" rel="nofollow">http://kylehouston.com/new/index_new.html</a> everything else works fine.</p>
+
+<p>Thanks in advance</p>
+
+<p>Kyle</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: estevan</title>
+		<link>http://jqueryfordesigners.com/image-loading/comment-page-4/#comment-7253</link>
+		<dc:creator>estevan</dc:creator>
+		<pubDate>Mon, 18 Jan 2010 08:06:10 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/image-loading/#comment-7253</guid>
+		<description>&lt;p&gt;Any suggestions on how I can implement this code without designating the image src in the javascript?  I&#039;m trying to set something up like this in Wordpress and I want it load the img from the PHP.&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Any suggestions on how I can implement this code without designating the image src in the javascript?  I&#8217;m trying to set something up like this in WordPress and I want it load the img from the PHP.</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Benedict Raynes</title>
+		<link>http://jqueryfordesigners.com/image-loading/comment-page-4/#comment-7078</link>
+		<dc:creator>Benedict Raynes</dc:creator>
+		<pubDate>Mon, 07 Dec 2009 17:01:12 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/image-loading/#comment-7078</guid>
+		<description>&lt;p&gt;This is strange - this method works very well on a apache server located on my computer, but when I tried deploying a website written with this code on any hosting, outside server - the images either didn&#039;t show up at all or showed up severely distorted. Do you know what could be wrong?&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>This is strange &#8211; this method works very well on a apache server located on my computer, but when I tried deploying a website written with this code on any hosting, outside server &#8211; the images either didn&#8217;t show up at all or showed up severely distorted. Do you know what could be wrong?</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Mike</title>
+		<link>http://jqueryfordesigners.com/image-loading/comment-page-4/#comment-7063</link>
+		<dc:creator>Mike</dc:creator>
+		<pubDate>Wed, 02 Dec 2009 02:20:14 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/image-loading/#comment-7063</guid>
+		<description>&lt;p&gt;Excellent!  Solved the exact problem I was having.  Thanks for posting this!&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Excellent!  Solved the exact problem I was having.  Thanks for posting this!</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kevin</title>
+		<link>http://jqueryfordesigners.com/image-loading/comment-page-4/#comment-7047</link>
+		<dc:creator>Kevin</dc:creator>
+		<pubDate>Thu, 26 Nov 2009 21:38:08 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/image-loading/#comment-7047</guid>
+		<description>&lt;p&gt;Hey - thanks for this post! I kept thinking, &quot;isn&#039;t load only for AJAX?&quot; and thought I was going to have to do up a whole AJAX handler in my PHP script just to swap images on the fly (I would just return the proper DOM element and swap it in...) - but this saved me the time and worked like a charm.&lt;/p&gt;
+
+&lt;p&gt;I hear that swapping images is territory to tread lightly when it comes to Webkit browsers, but I&#039;ll cross that bridge when I come to it...it&#039;s good for now :D&lt;/p&gt;
+
+&lt;p&gt;Take care.&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Hey &#8211; thanks for this post! I kept thinking, &#8220;isn&#8217;t load only for AJAX?&#8221; and thought I was going to have to do up a whole AJAX handler in my PHP script just to swap images on the fly (I would just return the proper DOM element and swap it in&#8230;) &#8211; but this saved me the time and worked like a charm.</p>
+
+<p>I hear that swapping images is territory to tread lightly when it comes to Webkit browsers, but I&#8217;ll cross that bridge when I come to it&#8230;it&#8217;s good for now :D</p>
+
+<p>Take care.</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: David</title>
+		<link>http://jqueryfordesigners.com/image-loading/comment-page-4/#comment-6889</link>
+		<dc:creator>David</dc:creator>
+		<pubDate>Mon, 02 Nov 2009 21:48:21 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/image-loading/#comment-6889</guid>
+		<description>&lt;p&gt;Hi,&lt;/p&gt;
+
+&lt;p&gt;thank you for this great tutorial. 
+Could you just tell us how to stop the loading? Because I have to override the loading, and I can&#039;t stop the first load. 
+So my complete callback are called 2 times and not 1....&lt;/p&gt;
+
+&lt;p&gt;thank you for your help!&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Hi,</p>
+
+<p>thank you for this great tutorial. 
+Could you just tell us how to stop the loading? Because I have to override the loading, and I can&#8217;t stop the first load. 
+So my complete callback are called 2 times and not 1&#8230;.</p>
+
+<p>thank you for your help!</p>]]></content:encoded>
+	</item>
+</channel>
+</rss>

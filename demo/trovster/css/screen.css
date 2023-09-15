@@ -1,0 +1,93 @@
+/*
+* Author: 		Trevor Morris
+* Contact:		trovster@gmail.com
+* Version:		0.7
+* Updated:		30/05/2008
+* Notes:		This is the core file for the entire site.
+*
+* CONTENTS
+* -------------------------
+* == includes
+* =l layout
+* 
+*/
+
+/* == includes
+--------------------------------------------------------------------------------------------------*/
+@import url(reset.css);
+@import url(grid.css);
+@import url(techniques.css);
+@import url(typography.css);
+@import url(navigation.css);
+@import url(comments.css);
+
+
+/* =l layout
+--------------------------------------------------------------------------------------------------*/
+html, body {
+	background: #151515;
+}
+body {
+	background: #151515 url(img/header.swirl.jpg) no-repeat 50% 0;
+}
+#container {
+	position: relative;
+	margin: 0 auto 5px;
+	min-height: 400px;
+}
+
+#branding {
+	padding-top: 40px; margin: 0 0 42px;
+}
+	#branding h1 {
+		margin: 0 0 11px -20px;
+	}
+		#branding h1 a {						
+			height: 80px; width: 320px;
+			background-image: url(img/trevor-morris.png);
+		}
+	
+	#branding h2.introduction {
+		margin: 0 -20px 0; padding: 0.6em 200px 0.6em 20px;
+		background: url(img/opacity.png) repeat 0 0;
+	}
+		#branding h2.introduction span {
+			display: block;
+		}
+		#branding h2.introduction span.amp,
+		#branding h2.introduction span.caps,
+		#branding h2.introduction span.dquo {
+			display: inline;
+		}
+
+
+#content {
+	padding-bottom: 40px;
+}
+	#content .section {
+		padding: 0 0 1.5em;
+		border-top: 1px dotted #777;
+	}
+
+
+#footer {
+	clear: both;
+	padding: 10px 0 40px;
+	font-size: 0.8333em; /* 10px */ color: #777;
+	border-top: 1px dotted #777;
+}
+	#footer p {
+		float: left;
+	}
+	#footer p.top {
+		float: right;
+	}
+
+
+address.adr span {
+	display: block;
+}
+address.adr span span {
+	display: inline;
+}
+

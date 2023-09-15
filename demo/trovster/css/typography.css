@@ -1,0 +1,338 @@
+/*
+* Author: 		Trevor Morris
+* Contact:		trovster@gmail.com
+* Version:		0.5
+* Updated:		28/04/2008
+* Notes:		Typography stylesheet.
+*
+* CONTENTS
+* -------------------------
+* =b basics
+* =h headings
+* =p paragraphs/copy/body-text/blockquotes
+* =l lists
+* =i inline elements
+* =a anchors/links
+* =t tables
+* =f forms
+* 
+*
+* COLOURS
+* -------------------------
+* 
+* 
+* 
+*/
+
+
+/* =b basics
+--------------------------------------------------------------------------------------------------*/
+body {
+	position: relative;
+	font: normal normal 62.5%/1.5 "Helvetica Neue", Helvetica, Arial, san-serif; /* 62.5% means a default font-size of 10px based upon 16px base-font */
+	/* 
+	Setting line-height, not using the font shorthand
+	http://www.quirksmode.org/bugreports/archives/2006/09/Line_height_declaration_in_short_hand_form.html */
+	line-height: 1.5;
+	color: #E9E9E9;
+}
+#container {
+	/*
+	base font-size rendering on 12px
+	Use http://riddle.pl/emcalc/ to calculate onwards */
+	font-size: 1.2em;
+	/*
+	Fixing fat font rendering in Safari
+	http://24ways.org/2006/knockout-type */
+	text-shadow: 0 0 0 #151515;
+}
+#container, x:-moz-any-link, x:default {
+	/*
+	Making Firefox use internal font rendering by default, to stop fat font rendering
+	Caveat for IE7 & alpha PNGs - http://allinthehead.com/retro/328/when-bugs-collide-fixing-text-dimming-in-firefox-2 */
+	opacity: 0.999;
+}
+#container, x:-moz-any-link {
+	opacity: 0.999;
+}
+
+h2.introduction,
+a:link, a:visited, a:focus, a:hover, a:active {
+	color: #39c;
+}
+
+
+
+
+/* =h headings
+--------------------------------------------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6,
+.introduction {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-transform: lowercase;
+}
+
+h2, body.permalink .hreview h3 {
+	margin: 2.3em 0 0.4167em; /* 46px / 10px */
+	font-size: 1.6667em; /* 20px */ line-height: 0.9; /* 18px */ font-weight: normal;
+}
+	h2.introduction {
+		margin: 0;
+		font-size: 2em; /* 24px */ line-height: 1.4167; /* 34px */ font-weight: normal;
+	}
+	h2 span.caps {
+		font-size: 1em;
+	}
+	
+h3,
+h4,
+table caption,
+blockquote,
+.lede {
+	margin: 1.5em 0 0.75em; /* 24px / 12px */
+	font-size: 1.3333em; /* 16px */ line-height: 1.125; /* 18px */ font-weight: normal;
+}
+	.column > h2:first-child,
+	.column > h3:first-child,
+	.column > h4:first-child {
+		margin-top: 0;
+	}
+
+h3 {
+	font-weight: bold;
+}
+h5, h6 {
+	font-size: 1em; /* 12px */
+}
+h5 {
+	font-weight: bold;
+}
+
+/*
+h2 span.caps, h3 span.caps,
+h4 span.caps, h5 span.caps,
+h6 span.caps {
+	font-size: 0.8333em;
+}
+h2 span.amp, h3 span.amp,
+h4 span.amp, h5 span.amp,
+h6 span.amp
+*/
+h2.introduction span.amp {
+	font-family: "Warnock Pro", "Goudy Old Style", "Palatino", "Book Antiqua", serif;
+	font-style: italic;
+}
+
+
+
+
+/* =p paragraphs/copy/body-text/blockquotes
+--------------------------------------------------------------------------------------------------*/
+p, ul, ol, dl, pre, address, table, fieldset {
+	margin: 0 0 1.5em;
+}
+	.lede {
+		margin: 0 0 1.0625em; /* 17px */
+	}
+	p.caption,
+	p.note {
+		color: #555;
+		font-size: 0.9167em; /* 11px */
+	}
+	p.entry-date {
+		margin: 0.6667em 0 0; /* 8px */
+		color: #555;
+	}
+	.entry-rating {
+		margin-bottom: 0;
+		font-size: 4em; /**/ line-height: 1.3542em; /* 65px */ text-align: center;
+	}
+
+pre {
+	padding: 4px 12px 5px;
+	background: #1C1C1C;
+}
+blockquote {}
+	blockquote p {
+		font-family: Georgia, "Times New Roman", Times, serif;
+		text-indent: -0.5em;  font-style: italic;
+	}
+	
+	/* these don't work, but it'd be nice to dream */
+	blockquote p:not(p.citation)::before,
+	blockquote p:nth-last-child(n-1)::before {
+		content: "\201c"; /*open-quote*/
+	}
+	blockquote p:nth-last-child(n-1)::after {
+		content:"\201d"; /*close-quote*/
+	}
+	
+	
+	blockquote p::before {
+		content: "\201c"; /*open-quote*/
+	}
+	blockquote p::after,
+	blockquote p.last::after,
+	body.js blockquote p.last::after {
+		content:"\201d"; /*close-quote*/
+	}
+	body.js blockquote p::after {
+		content: ""; /*no-close-quote*/
+	}
+	blockquote p.citation {
+		font: 0.75em/1.5 "Helvetica Neue", Helvetica, Arial, san-serif; text-align: right; color: #555; font-style: normal;
+		margin-top: -1.5em;
+	}
+	blockquote p.citation::before {
+		content: "— ";
+	}
+	blockquote p.citation::after {
+		content: "";
+	}
+
+
+
+/* =l lists
+--------------------------------------------------------------------------------------------------*/
+ul, ol {
+	margin-left: 24px;
+}
+ul li {}
+ol {
+	list-style-type: decimal-leading-zero;
+}
+ul {
+	list-style-type: square;
+}
+ol.footnotes {
+	border-top: 1px dotted #ccc;
+}
+
+dl dt {
+	font-weight: bold;
+}
+dl dd {
+	margin-left: 1em;
+}
+dl dd p:first-child {
+	margin-top: 0;
+}
+dl dd,
+dl dd + dd,
+dl dd + dd + dd,
+dl dd + dd + dd + dd,
+dl dd + dd + dd + dd + dd {
+	margin-bottom: 1em;
+}
+dl dd + dd,
+dl dd + dd + dd,
+dl dd + dd + dd + dd,
+dl dd + dd + dd + dd + dd {
+	margin-top: -1em;
+}
+
+
+
+
+
+/* =i inline elements
+--------------------------------------------------------------------------------------------------*/
+abbr, acronym {}
+strong {
+	font-weight: bold;
+}
+em {
+	font-style: italic;
+}
+img, a img, a:link img, a:visited img {
+	overflow: hidden; display: block;
+	border: 5px solid #1C1C1C;
+}
+code, kbd, var {
+	font-family: Monaco,"Courier New", Courier, monospace;
+}
+sup {
+	position: relative; top: 2px; left: 1px;
+	font-size: 0.75em; /* 9px */
+}
+q {
+	quotes:"\201C" "\201D" "\2018" "\2019";
+}
+	q:before {content:open-quote;}
+	q:after {content:close-quote;}
+
+
+
+
+/* =a anchors/links
+--------------------------------------------------------------------------------------------------*/
+a:link, a:visited, a:focus, a:hover, a:active {
+	text-decoration: none;
+}
+a:hover,
+.fitt_hover, .fitt_hover a {
+	text-decoration: underline;
+}
+.fitt_enabled {
+	cursor: pointer;
+}
+h2 a:link, h2 a:visited, h2 a:focus, h2 a:hover, h2 a:active {
+	color: #fff;
+	text-decoration: none;
+}
+sup a:link, sup a:visited, sup a:focus, sup a:hover, sup a:active {
+	color: #fff;
+}
+	
+	
+
+	
+/* =t tables
+--------------------------------------------------------------------------------------------------*/
+table {}
+	table caption {
+		caption-side: top;
+		text-align: left;
+	}
+	table thead th {
+		padding: 0 1em 0.5em 0.6666em;
+		font-weight: bold; text-align: left;
+		vertical-align: top;
+		border-bottom: 1px solid #555;
+	}
+	table tbody td {
+		padding: 0.3333em 1em 0.3333em 0.6666em; /* 4px */
+		vertical-align: top;
+		border-bottom: 1px solid #1C1C1C;
+	}
+	table tbody tr {
+		background-color: #111;
+	}
+	table tbody tr.odd {
+		background-color: transparent;
+	}
+	table th.number,
+	table td.number {
+		text-align: center;
+	}
+	
+	table col {
+		border-right: 1px solid #333;
+	}
+	table col.l {
+		border-right: 0;
+	}
+	
+	table.imdb-250 {
+		width: 100%;
+	}
+
+
+
+
+/* =f forms
+--------------------------------------------------------------------------------------------------*/
+
+
+
+

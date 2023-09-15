@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>Image Fade Revisited</title>
+<style type="text/css" media="screen">
+body {
+    font-family: helvetica;
+}
+
+#navigation {
+  list-style: none;
+}
+
+#navigation li {
+  float: left;
+}
+
+#navigation a * {
+  display: none;
+}
+
+#navigation a,
+#navigation a .hover {
+  height: 70px;
+	position: relative;
+	display: block;
+	background: url(images/dragon-sprite.jpg) 0 0 no-repeat;
+}
+
+/* individual navigation items */
+#navigation a.home {
+  background-position: 0 0;
+  width: 102px;
+}
+
+#navigation .highlight a.home:hover,
+#navigation a.home .hover {
+  background-position: 0 -280px;
+  width: 102px;
+}
+
+#navigation a.services {
+  background-position: -102px -140px;
+  width: 115px;
+}
+
+#navigation .highlight a.services:hover,
+#navigation a.services .hover {
+  background-position: -102px -280px;
+}
+
+#navigation a.portfolio {
+  background-position: -217px 0;
+  width: 120px;
+}
+
+#navigation .highlight a.portfolio:hover,
+#navigation a.portfolio .hover {
+  background-position: -218px -280px;
+}
+
+#navigation a.about {
+  background-position: -337px 0;
+  width: 100px;
+}
+
+#navigation .highlight a.about:hover,
+#navigation a.about .hover {
+  background-position: -339px -280px;
+}
+
+#navigation a.contact {
+  background-position: -437px 0;
+  width: 115px;
+}
+
+#navigation .highlight a.contact:hover,
+#navigation a.contact .hover {
+  background-position: -440px -280px;
+}
+
+</style>
+<!--[if IE]>
+<style type="text/css" media="screen">
+#navigation a .hover {
+  cursor: pointer;
+}
+</style>
+<![endif]-->
+<script src="jquery-1.2.6.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        if ($.browser.msie && $.browser.version < 7) return;
+        
+        $('#navigation li')
+            .removeClass('highlight')
+            .find('a')
+            .append('<span class="hover" />').each(function () {
+                    var $span = $('> span.hover', this).css('opacity', 0);
+                    $(this).hover(function () {
+                        // on hover
+                        $span.stop().fadeTo(500, 1);
+                    }, function () {
+                        // off hover
+                        $span.stop().fadeTo(500, 0);
+                    });
+                });
+                
+    });
+</script>
+</head>
+<body>
+  <h1>Image Fade - Revisited</h1>
+
+  <div id="intro">
+      <p>This technique revisits image fade transitions, following the techniques shown on the Dragon Interative web site. <br /><a href="../image-fade-revisited.1.html">Read the article, and see the screencast this demonstration relates to</a></p>
+  </div>
+
+  <ul id="navigation">
+    <li class="highlight"><a href="fade-revisited.html#" class="home"><span>Home</span></a></li>
+    <li class="highlight"><a href="fade-revisited.html#" class="services"><span>Services</span></a></li>
+    <li class="highlight"><a href="fade-revisited.html#" class="portfolio"><span>Portfolio</span></a></li>
+    <li class="highlight"><a href="fade-revisited.html#" class="about"><span>About</span></a></li>
+    <li class="highlight"><a href="fade-revisited.html#" class="contact"><span>Contact</span></a></li>
+
+  </ul>
+</body>
+</html>
+
+
+
+

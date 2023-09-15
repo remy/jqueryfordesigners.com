@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Animation Jump - version 2</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<style type="text/css" media="screen">
+body { background-color: #fff; font: 16px Helvetica, Arial; color: #000; font-size: 16px; line-height: 20px; padding: 20px; }
+a { line-height: 40px; }
+#container { width: 400px; }
+#test { background: #c00; color: #fff; }
+#test p { margin: 0; margin-bottom: 16px; }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function () {
+    var $div = $('#test');
+    var height = $div.height();
+    $div.hide().css({ height : 0 });
+
+    $('a').click(function () {
+        if ($div.is(':visible')) {
+            $div.animate({ height: 0 }, { duration: 2500, complete: function () {
+                $div.hide();
+            } });
+        } else {
+            $div.show().animate({ height : height }, { duration: 2500 });
+        }
+        
+        return false;
+    });
+});
+</script>
+</head>
+<body>
+  <div><a href="jump2.html#test">reveal</a></div>
+
+  <div id="container">
+    <div id="test">
+      <p>Hello from JS Bin</p>
+      <p id="hello">this is another content block - but it's going to jump when it's exposed :-(</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+
+</body>
+</html>

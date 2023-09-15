@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: Simple jQuery Spy Effect</title>
+	<atom:link href="http://jqueryfordesigners.com/simple-jquery-spy-effect/feed/" rel="self" type="application/rss+xml" />
+	<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/</link>
+	<description>Tutorials and screencasts</description>
+	<lastBuildDate>Thu, 22 Sep 2011 12:58:42 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.3.1</generator>
+	<item>
+		<title>By: David Peters</title>
+		<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/comment-page-3/#comment-7211</link>
+		<dc:creator>David Peters</dc:creator>
+		<pubDate>Wed, 13 Jan 2010 19:44:47 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/simple-jquery-spy-effect/#comment-7211</guid>
+		<description>&lt;p&gt;This is awesome!&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>This is awesome!</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: fukid</title>
+		<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/comment-page-3/#comment-7173</link>
+		<dc:creator>fukid</dc:creator>
+		<pubDate>Fri, 08 Jan 2010 16:59:08 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/simple-jquery-spy-effect/#comment-7173</guid>
+		<description>&lt;p&gt;this is the version with modified 
+1) slightly random interval
+2) support dynamic height&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(function ($) {
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;$.fn.simpleSpy = function (limit, interval) {
+  limit = limit &#124;&#124; 4;
+  interval = 20000;
+  return this.each(function () {
+    var $list = $(this),
+      items = [], 
+      itemsHeight=[],
+      currentItem = limit,
+      total = 0, 
+      height = $list.find(&#039;&gt; li:first&#039;).height();
+    $list.find(&#039;&gt; li&#039;).each(function () {
+        itemsHeight.push($(this).height());
+        items.push(&#039;&lt;li&gt;&#039; + $(this).html() + &#039;&lt;/li&gt;&#039;);
+    });
+    total = items.length;
+    $list.find(&#039;&gt; li&#039;).filter(&#039;:gt(&#039; + (limit - 1) + &#039;)&#039;).remove();
+    function spy() {
+    interval = 20000;
+    interval = interval *Math.random();
+      var $insert = $(items[currentItem]).css({
+        height : 0,
+        opacity : 0,
+        display : &#039;none&#039;
+      }).prependTo($list);
+      $list.find(&#039;&gt; li:last&#039;).animate({ opacity : 0}, 1000, function () {
+        $insert.animate({ height : itemsHeight[currentItem-1] }, 1000).animate({ opacity : 1 }, 1000);
+        $(this).animate({ height : 0 }, 1000, function () {
+            $(this).remove();
+        });
+      });
+      currentItem++;
+      if (currentItem &gt;= total) {
+        currentItem = 0;
+      }
+      setTimeout(spy, interval);
+    }
+    spy();
+  });
+};&lt;br /&gt;
+})(jQuery);
+&lt;/code&gt;&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>this is the version with modified 
+1) slightly random interval
+2) support dynamic height</p>
+
+<p><code></code></p>
+
+<pre><code>(function ($) {
+</code></pre>
+
+<p>$.fn.simpleSpy = function (limit, interval) {
+  limit = limit || 4;
+  interval = 20000;
+  return this.each(function () {
+    var $list = $(this),
+      items = [], 
+      itemsHeight=[],
+      currentItem = limit,
+      total = 0, 
+      height = $list.find('> li:first').height();
+    $list.find('> li').each(function () {
+        itemsHeight.push($(this).height());
+        items.push('<li>' + $(this).html() + '</li>');
+    });
+    total = items.length;
+    $list.find('> li').filter(':gt(' + (limit - 1) + ')').remove();
+    function spy() {
+    interval = 20000;
+    interval = interval *Math.random();
+      var $insert = $(items[currentItem]).css({
+        height : 0,
+        opacity : 0,
+        display : 'none'
+      }).prependTo($list);
+      $list.find('> li:last').animate({ opacity : 0}, 1000, function () {
+        $insert.animate({ height : itemsHeight[currentItem-1] }, 1000).animate({ opacity : 1 }, 1000);
+        $(this).animate({ height : 0 }, 1000, function () {
+            $(this).remove();
+        });
+      });
+      currentItem++;
+      if (currentItem >= total) {
+        currentItem = 0;
+      }
+      setTimeout(spy, interval);
+    }
+    spy();
+  });
+};<br />
+})(jQuery);
+</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Andrew</title>
+		<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/comment-page-3/#comment-7083</link>
+		<dc:creator>Andrew</dc:creator>
+		<pubDate>Wed, 09 Dec 2009 10:30:06 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/simple-jquery-spy-effect/#comment-7083</guid>
+		<description>&lt;p&gt;Is there any way of getting the script to run the other way round? &lt;/p&gt;
+
+&lt;p&gt;ie removing top item and adding new item tothe  bottom?&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Is there any way of getting the script to run the other way round? </p>
+
+<p>ie removing top item and adding new item tothe  bottom?</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Crome</title>
+		<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/comment-page-3/#comment-6942</link>
+		<dc:creator>Crome</dc:creator>
+		<pubDate>Mon, 09 Nov 2009 15:00:07 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/simple-jquery-spy-effect/#comment-6942</guid>
+		<description>&lt;p&gt;This is a great script!
+I would love to use it with some kind of navigation/pagination system, is it possible?&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>This is a great script!
+I would love to use it with some kind of navigation/pagination system, is it possible?</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: florent</title>
+		<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/comment-page-3/#comment-6743</link>
+		<dc:creator>florent</dc:creator>
+		<pubDate>Mon, 12 Oct 2009 13:05:31 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/simple-jquery-spy-effect/#comment-6743</guid>
+		<description>&lt;p&gt;hello, 1 st : very nice effect&lt;/p&gt;
+
+&lt;p&gt;2 nd : it is possible to scroll left to right and don&#039;t Up to Down ?&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>hello, 1 st : very nice effect</p>
+
+<p>2 nd : it is possible to scroll left to right and don&#8217;t Up to Down ?</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ben</title>
+		<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/comment-page-3/#comment-6535</link>
+		<dc:creator>Ben</dc:creator>
+		<pubDate>Sat, 03 Oct 2009 18:17:16 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/simple-jquery-spy-effect/#comment-6535</guid>
+		<description>&lt;p&gt;How can I make it so this script won&#039;t do anything in IE7? since IE7 bugs like a mofo.&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>How can I make it so this script won&#8217;t do anything in IE7? since IE7 bugs like a mofo.</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Lance</title>
+		<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/comment-page-3/#comment-6407</link>
+		<dc:creator>Lance</dc:creator>
+		<pubDate>Wed, 30 Sep 2009 18:59:11 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/simple-jquery-spy-effect/#comment-6407</guid>
+		<description>&lt;p&gt;Just curious if anyone could help show me how to make the images go from left to right (or right to left) .&lt;/p&gt;
+
+&lt;p&gt;thanks!
+L&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Just curious if anyone could help show me how to make the images go from left to right (or right to left) .</p>
+
+<p>thanks!
+L</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ben</title>
+		<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/comment-page-3/#comment-6388</link>
+		<dc:creator>Ben</dc:creator>
+		<pubDate>Tue, 29 Sep 2009 21:55:13 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/simple-jquery-spy-effect/#comment-6388</guid>
+		<description>&lt;p&gt;This doesn&#039;t seem to work on IE7. Which is strange, because it does work in ie8 / ie6... any help?&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>This doesn&#8217;t seem to work on IE7. Which is strange, because it does work in ie8 / ie6&#8230; any help?</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Free.Styler_1@yahoo.com</title>
+		<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/comment-page-3/#comment-5652</link>
+		<dc:creator>Free.Styler_1@yahoo.com</dc:creator>
+		<pubDate>Sat, 05 Sep 2009 23:22:19 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/simple-jquery-spy-effect/#comment-5652</guid>
+		<description>&lt;p&gt;Very Cool Effect...
+But please guys, How can i put 2 buttons in the top and in the bottom of the list to move the elements up and down manually ???&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Very Cool Effect&#8230;
+But please guys, How can i put 2 buttons in the top and in the bottom of the list to move the elements up and down manually ???</p>]]></content:encoded>
+	</item>
+	<item>
+		<title>By: kamal</title>
+		<link>http://jqueryfordesigners.com/simple-jquery-spy-effect/comment-page-3/#comment-5574</link>
+		<dc:creator>kamal</dc:creator>
+		<pubDate>Sat, 29 Aug 2009 16:19:32 +0000</pubDate>
+		<guid isPermaLink="false">http://jqueryfordesigners.com/simple-jquery-spy-effect/#comment-5574</guid>
+		<description>&lt;p&gt;Thanks for this ^power effect, so power.&lt;/p&gt;
+</description>
+		<content:encoded><![CDATA[<p>Thanks for this ^power effect, so power.</p>]]></content:encoded>
+	</item>
+</channel>
+</rss>

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>API: Queue and Dequeue</title>
+<style type="text/css" media="screen">
+body {
+  font: 1em/1.5em Helvetica, Arial, sans-serif;
+}
+
+input {
+  font-size: 16px;
+  padding: 5px;
+  width: 150px;
+  display: block;
+  margin: 10px;
+}
+
+.box {
+  float: left;
+  height: 148px;
+  width: 148px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  position: relative;
+}
+
+.box p { 
+  margin: 14px 5px;
+  color: #fff;
+  font-size: 90%;
+}
+
+#boxpause {
+  background-color: #0cc;
+}
+
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8">
+
+$.fn.pause = function (n) {
+    return this.queue(function () {
+        var el = this;
+        setTimeout(function () {
+            return $(el).dequeue();
+        }, n);
+    });
+};
+
+$(document).ready(function () {
+    setInterval(function () {
+        $('#counter').html('Animations to go: ' + $('.box').queue().length);
+    }, 10);
+
+    $('input').click(function () {
+        $('.box').animate({
+            height : 20
+        }, 'slow')
+        .animate({
+            height : 150
+        }, 'slow')
+        .animate({
+            left: '+=100',
+            top: '+=100'
+        }, 200)
+        .queue(function () {
+            $('#title').html("We're in the animation, baby!");
+            $(this).dequeue();
+        })
+        .pause(1000)
+        .animate({
+            top: 0
+        }, 200)
+        .animate({
+            height: 5
+        })
+        .animate({
+            height: 150
+        });
+
+    });
+
+});
+
+</script>
+</head>
+<body>
+    <h1><span id="title">API: queue &amp; dequeue</span> <span id="counter"></span></h1>
+
+    <div class="effect">
+        <input type="button" id="animate" value="animate" />
+        <div class="box" id="boxpause"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>            
+    </div>
+
+</body>
+</html>

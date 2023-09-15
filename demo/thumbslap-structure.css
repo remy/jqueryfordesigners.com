@@ -1,0 +1,352 @@
+/*//////////////
+Main Framework
+///////////// */
+	
+	body
+	{
+		overflow-y: scroll;
+	}
+	#header,
+	#content,
+	#footer
+	{
+		width: 760px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+/*//////////////
+Headings
+///////////// */
+
+	#content h2
+	{
+		clear: both;
+		margin: 1em 0 1em 0;
+	}
+	
+/*//////////////
+Header
+///////////// */
+
+	#header
+	{
+		position: relative;
+		padding: 45px 0 0 0;
+	}
+	body#home #header,
+	body#register #header,
+	body#login #header,
+	body#tour #header
+	{
+		padding-top: 35px;
+	}
+	#header h1
+	{
+		position: absolute;
+		top: 1.7em;
+	}
+	#header h1 a
+	{
+		float: left;
+		width: 240px;
+		height: 61px;
+	}
+	#header h1 span
+	{
+		display: none;
+	}
+	ul#mainNavigation
+	{
+		float: right;
+		width: 500px;
+		margin-bottom: 30px;
+	}
+	body#home ul#mainNavigation,
+	body#register ul#mainNavigation,
+	body#login ul#mainNavigation,
+	body#tour ul#mainNavigation
+	{
+		margin-bottom: 40px;
+	}
+	ul#mainNavigation li
+	{
+		float: right;
+		margin: 0 0 0 20px;
+		padding: 0 0 7px 0;
+	}
+	ul#mainNavigation li.alt
+	{
+		clear: left;
+		padding: 7px 0 0 0;
+	}
+	p#currentUser
+	{
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 0 .5em;
+	}
+	form#siteSearch
+	{
+		clear: both;
+		display: block;
+		padding: 7px 5px;
+		margin-bottom: 2em;
+	}
+	form#siteSearch label,
+	form#siteSearch input#searchTextSubmit
+	{
+		display: none;
+	}
+	form#siteSearch input#searchText
+	{
+		margin-left: 30px;
+		width: 700px;
+	}
+
+/*//////////////
+Message
+///////////// */	
+
+	ul#message
+	{
+		position: absolute;
+		top: 0;
+		left: 0;
+	}	
+	ul#message li
+	{
+		padding: 0 .5em;
+	}
+	
+/*//////////////
+Content
+///////////// */
+
+	#content
+	{
+		padding-top: 2em;
+	}
+	#content h1
+	{
+		line-height: 1.3em;
+	}
+	#content p#navigation
+	{
+		clear: left;
+		float: left;
+		padding: 0;
+	}
+	#content p
+	{
+		margin-bottom: 1em;
+	}
+	p#navigation
+	{
+		padding: 10px 0;
+	}
+	#action
+	{
+		margin: 1em 0 0 0;
+	}
+	ul#subNav
+	{
+		margin-bottom: 2em;
+	}
+	ul#subNav li
+	{
+		float: left;
+		position: relative;
+	}
+	ul#subNav li.alt
+	{
+		float: right;
+	}
+	ul#subNav li a
+	{
+		display: block;
+		padding: 5px 10px;
+	}
+	#contentMain
+	{
+		float: left;
+		width: 500px;
+	}
+	#contentSidebar
+	{
+		float: right;
+		width: 240px;
+	}
+	.oneCol
+	{
+		float: left;
+		width: 240px;
+	}
+	.twoCol
+	{
+		float: right;
+		width: 500px;
+	}
+	#eventHeader img
+	{
+		margin-top: 10px;
+		width: 240px;
+	}
+	#eventHeader p.notPlaying,
+	#eventHeader p.playing
+	{
+		clear: left;
+		float: left;
+		padding: .2em .5em;
+	}
+	#eventHeader ul
+	{
+		padding-top: 2em;
+	}
+	#eventHeader ul li
+	{
+		float: left;
+		padding: 0 0 7px 0;
+	}
+	.post
+	{
+		padding-top: 2em;
+		padding-bottom: 2em;
+	}
+	.userProfile h3 span
+	{
+		display: block;
+	}
+	.userProfile img
+	{
+		float: right;
+		margin-left: 1em;
+	}
+	input#people
+	{
+		width: 160px;
+		margin-left: 2px;
+		padding: 7px 5px;
+	}
+
+/*//////////////
+Footer
+///////////// */
+
+	#footer
+	{
+		margin-top: 2em;
+		padding: 10px 20px;
+		width: 720px;
+	}
+	
+/*//////////////
+Login, Register & Feedback
+///////////// */
+
+	form.basic fieldset div
+	{
+		margin-bottom: 1em;
+	}
+	form.basic fieldset label,
+	form.basic fieldset input,
+	form.basic fieldset select
+	{
+		float: left;
+	}
+	form.basic fieldset label
+	{
+		width: 245px;
+		padding: .5em 0;
+	}
+	form.basic fieldset .fieldOption input
+	{
+		margin-left: 20px;
+		padding: 5px;
+		width: 275px;
+	}
+	form.basic fieldset .fieldOption select
+	{
+		padding: 0;
+		margin: 8px 0 0 20px;
+	}
+	form.basic fieldset #submitBox input
+	{
+		margin-left: 265px;
+		padding: .5em;
+	}
+	form.basic fieldset span
+	{
+		float: left;
+		padding: .6em;
+	}
+	form.basic fieldset span a
+	{
+		padding: .5em;
+	}
+	form.basic fieldset ul li
+	{
+		margin-left: 265px;
+		padding-top: 1em;
+	}
+	form.basic fieldset #submitBox
+	{
+		padding-bottom: .5em;
+	}
+	form#register fieldset .fieldOption
+	{
+		position: relative;
+		padding-bottom: 2em;
+	}
+	form#register fieldset .fieldOption label em
+	{
+		position: absolute;
+		left: 265px;
+		top: 35px;
+	}
+	form#register fieldset .fieldOption label em.select
+	{
+		top: 30px;
+	}
+	form#feedback fieldset label
+	{
+		display: block;
+		float: none;
+		width: auto;
+		padding: 0 0 .5em 0;
+	}
+	form#feedback fieldset #submitBox input,
+	form#feedback fieldset ul li
+	{
+		margin-left: 0;
+	}
+	ul.errorlist li
+	{
+		padding: .2em!important;
+		position: absolute;
+		left: 295px;
+		top: 2px;
+		background: red;
+		color: #FFF;
+	}
+
+
+/*//////////////
+Homepage
+///////////// */
+
+	body#home #contentHeaderHolder h1
+	{
+		width: 80%;
+	}
+	body#home #contentHeaderHolder
+	{
+		padding-bottom: 15em;
+	}
+	body#home #footer
+	{
+		width: 760px;
+		padding-left: 0;
+		padding-right: 0;
+	}

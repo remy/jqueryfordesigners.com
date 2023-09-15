@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title>ThumbSlap &raquo; Home</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" media="all" href="thumbslap-structure.css" />
+		<style type="text/css" media="screen">
+			#header, #messageArea ul, #contentHeaderHolder, #content, #footer, #contentMain {
+				width: 750px;
+			}
+			
+			#messageArea li {
+				width: auto!important;
+			}
+			
+			#messageArea li.alt {
+				float: right;
+			}
+			
+			#mainNavigation {
+				width: auto!important;
+			}
+			
+			#header form#siteSearch input#searchText {
+				width: 90px;
+				margin-left: 10px;
+			}
+			
+			#messageMain textarea {
+				height: 5em;
+			}
+			
+			.space {
+				margin-left: 5px;
+			}
+			
+			fieldset div label {
+				float: left;
+				min-width: 85px;
+			}
+			
+			.fieldOptions > div {
+				margin-bottom: 5px;
+			}
+			
+			.fieldOptions {
+				background:#FFFFFF none repeat scroll 0%;
+				border-bottom:2px solid #EAF5E5;
+				color:#000000;
+			}
+			
+			#contentAction p {
+				padding: 10px;
+			}
+			
+			.pad {
+				padding: 1em;
+			}
+			
+			#contentHeaderHolder ul li a.selected {
+				background:#FFFFFF none repeat scroll 0%;
+				color:#000000;
+			}
+		</style>
+
+		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+			$(function () {
+				var tabs = [];
+				var tabContainers = [];
+				$('ul.tabs a').each(function () {
+					if (this.pathname == window.location.pathname) {
+						tabs.push(this);
+						tabContainers.push($(this.hash).get(0));
+					}
+				});
+				
+				$(tabs).click(function () {
+					// hide all tabs
+					$(tabContainers).hide().filter(this.hash).show();
+					
+					// set up the selected class
+					$(tabs).removeClass('selected');
+					$(this).addClass('selected');
+					
+					return false;
+				});
+			});
+		</script>
+	</head>
+	<body id="profile">
+		<ul>
+			<li class="void"><a href="thumbslap.html#">Skip to Navigation</a></li>
+			<li class="void"><a href="thumbslap.html#">Skip to Content</a></li>
+		</ul>
+		<div id="header" class="clearFix">
+			<h1><a href="http://jqueryfordesigners.com/demo/dashboard.htm"><span>ThumbSlap - The Gamers Network</span></a></h1>
+			<ul id="mainNavigation">					
+				<li class="first"><a href="http://jqueryfordesigners.com/demo/people.htm" accesskey="2">People (6)</a></li>
+				<li><a href="http://jqueryfordesigners.com/demo/games.htm" accesskey="3">Games</a></li>
+				<li><a href="http://jqueryfordesigners.com/demo/groups.htm" accesskey="4">Groups</a></li>
+				<li><a href="http://jqueryfordesigners.com/demo/message.htm" accesskey="3">Messages (2)</a></li>
+			</ul>
+			<form action="http://jqueryfordesigners.com/demo/search.htm" id="siteSearch">
+				<fieldset>
+					<legend>Search for:</legend>
+					<input type="text" name="searchText" id="searchText" title="Game, Group or Person" class="hint" />
+					<input type="submit" name="searchTextSubmit" id="searchTextSubmit" value="Search" />	
+				</fieldset>
+			</form>
+		</div>
+		<div id="messageArea" class="clearFix">
+			<ul>
+				<li class="alt"><a href="thumbslap.html">Darthmahon</a> | <a href="http://jqueryfordesigners.com/demo/message.htm">2 Messages!</a> | <a href="http://area51.thumbslap.com/static/settings.htm">Settings</a> | <a href="http://jqueryfordesigners.com/demo/homepage.htm">Logout</a></li>
+				<li><em>(AD) <a href="thumbslap.html#">Buy Gears of War for only &pound;32.99</a> and hook up with Mzupeman</em></li>
+			</ul>
+		</div>
+		<div id="contentHeader" class="clearFix">
+			<div id="contentHeaderHolder" class="clearFix" style="background-image: url(http://jqueryfordesigners.com/images/hero/360/profile_halo3.jpg);">
+				<img src="http://area51.thumbslap.com/static/../images/avatars/darthmahon/avatar.jpg" alt="Mzupeman" title="Mzupeman" width="50" height="50" />
+				<h1>Dashboard</h1>
+				
+				<!-- Tab Navigation -->
+				
+				<ul class="tabs">
+					<li><a class="selected" href="thumbslap.html#sendAMessage">Send a Message</a></li>
+					<li><a href="thumbslap.html#arrageGame">Arrange a Game</a></li>
+					<li><a href="thumbslap.html#sendFile">Send a File</a></li>
+					<li class="alt"><a href="http://area51.thumbslap.com/static/settings.htm">Settings...</a></li>
+				</ul>
+				
+				
+			</div>
+		</div>
+		<div id="content" class="clearFix">
+			<div id="contentMain">
+				<div id="contentAction" class="tabContent">
+					<!-- Tab contents -->
+					<div id="sendAMessage">
+					<form action="http://jqueryfordesigners.com/demo/post" id="sendMessageForm" action="http://demo.com/thumbslap?view=sendMessage">
+						<fieldset>
+							<legend>What do you want to say to Mzupeman?</legend>
+							<div id="messageOptions" class="clearFix">
+								<div id="messageRecipient">
+									<label for="recipient">Recipient</label>
+									<select id="recipient" class="space">
+										<option>JonathanChong</option>
+										<option>Sipher</option>
+									</select>
+								</div>
+								<div id="messageVisibility">
+									<label for="public">Make this message public</label>
+									<input type="checkbox" name="public" id="public" />
+								</div>
+							</div>
+							<div id="messageMain">
+								<textarea name="messageText" id="messageText" title="Type your message here..." class="hint"></textarea>
+								<input type="submit" name="sendMessage" id="sendMessage" value="Send Message" />
+							</div>
+						</fieldset>
+					</form>
+					</div>
+					
+					<div id="arrageGame">
+						<form action="thumbslap.html">
+							<fieldset>
+								<legend>Arrange a Game</legend>
+								<div class="fieldOptions clearFix">
+									<div>
+										<label for="arrangeGame">Game</label>
+										<select id="arrangeGame">
+											<option>Halo 3 / Xbox 360</option>
+											<option>Mario Super Striker / Wii</option>
+										</select>
+									</div>
+									<div>
+										<label for="arrangeDate">Date</label>
+										<input type="text" name="arrangeDate" value="2008-01-17" id="arrangeDate" size="10">
+									</div>
+									<div>
+										<label for="arrangeTime">Time</label>
+										<input type="text" name="arrangeTime" value="20:00" id="arrangeTime" size="6">
+									</div>
+								
+								</div>
+								<div class="pad">
+									<p>Arrange a game with users, let them know when you'll be playing, lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+									<input type="submit" name="arrangeGame" id="arrangeGame" value="Send Invite for Game" />
+								</div>
+							</fieldset>	
+						</form>
+					</div>
+
+					<div id="sendFile">
+						<form action="http://jqueryfordesigners.com/demo/post" id="sendFileForm">
+							<fieldset>
+								<legend>Send a file</legend>
+								<div class="fieldOptions clearFix">
+									<div>
+										<label for="fileRecipient">Recipient</label>
+										<select id="fileRecipient">
+											<option>JonathanChong</option>
+											<option>Sipher</option>
+										</select>
+									</div>
+									<div>
+										<label for="file">Upload file</label>
+										<input type="file" name="file" value="" id="file">
+									</div>
+								</div>
+								<div class="pad">
+									<p>Sending a file to user, Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+									<input type="submit" name="sendFile" value="Send File" />
+							</fieldset>
+						</form>
+					</div>
+
+				</div>
+				<h2><span>You have 2 new messages!</span></h2>
+				<p>When you receive a new message, it will appear at the top of the list and be highlighted. Simply click on the title to read that message and all previous replies.</p>
+				<div class="post clearFix unread">
+					<img src="http://area51.thumbslap.com/images/avatars/jonathanchong/avatar.jpg" alt="Jarkko Laine" title="Jarkko Laine" width="50" height="50" />
+					<h3><a href="http://jqueryfordesigners.com/demo/message_read.htm"><strong>(New)</strong> Profile page is getting long... (2)</a> <em class="message">2 minutes ago</em></h3>
+					<p>Darthmahom, JonathanChong</p>
+				</div>
+				<div class="post clearFix unread">
+					<img src="http://area51.thumbslap.com/images/avatars/generic_3.jpg" alt="Jarkko Laine" title="Jarkko Laine" width="50" height="50" />
+					<h3><a href="thumbslap.html#"><strong>(New)</strong> Fancy a game of Halo 3 sometime...</a> <em class="invite">16 minutes ago</em></h3>
+					<p>Darthmahom, JonathanChong</p>
+				</div>
+				<div class="post clearFix">
+					<img src="http://area51.thumbslap.com/images/avatars/jonathanchong/avatar.jpg" alt="Jarkko Laine" title="Jarkko Laine" width="50" height="50" />
+					<h3><a href="thumbslap.html#">What are you doing about...</a> <em class="message">4 hours ago</em></h3>
+					<p>Darthmahom, JonathanChong</p>
+				</div>
+				<div class="post clearFix">
+					<img src="http://area51.thumbslap.com/images/avatars/generic_2.jpg" alt="Jarkko Laine" title="Jarkko Laine" width="50" height="50" />
+					<h3><a href="thumbslap.html#">Can you send me that file...</a> <em class="game">2 days ago</em></h3>
+					<p>Darthmahom, JonathanChong</p>
+				</div>
+				<div class="post clearFix">
+					<img src="http://area51.thumbslap.com/images/avatars/generic_5.jpg" alt="Jarkko Laine" title="Jarkko Laine" width="50" height="50" />
+					<h3><a href="thumbslap.html#">Whatd do you think then... (14)</a> <em class="message">2 months ago</em></h3>
+					<p>Darthmahom, JonathanChong</p>
+				</div>
+				<div class="post clearFix">
+					<img src="http://area51.thumbslap.com/images/avatars/generic_4.jpg" alt="Jarkko Laine" title="Jarkko Laine" width="50" height="50" />
+					<h3><a href="thumbslap.html#">What are you doing about...</a> <em class="message">4 hours ago</em></h3>
+					<p>Darthmahom, JonathanChong</p>
+				</div>
+				<div class="post clearFix">
+					<img src="http://area51.thumbslap.com/images/avatars/jonathanchong/avatar.jpg" alt="Jarkko Laine" title="Jarkko Laine" width="50" height="50" />
+					<h3><a href="thumbslap.html#">Can you send me that file...</a> <em class="game">2 days ago</em></h3>
+					<p>Darthmahom, JonathanChong</p>
+				</div>
+				<div class="post clearFix">
+					<img src="http://area51.thumbslap.com/images/avatars/jonathanchong/avatar.jpg" alt="Jarkko Laine" title="Jarkko Laine" width="50" height="50" />
+					<h3><a href="thumbslap.html#">Whatd do you think then... (14)</a> <em class="message">2 months ago</em></h3>
+					<p>Darthmahom, JonathanChong</p>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<p>&copy; ThumbSlap 2007. <a href="http://jqueryfordesigners.com/demo/feedback.htm">How can we make ThumbSlap better?</a></p>
+			<p>Use of this site is subject to express terms of use, which prohibit commercial use of this site.
+By continuing past this page, you agree to abide by these terms.</p>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

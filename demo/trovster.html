@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en" dir="ltr">
+<head>
+	<!-- site created by… -->
+	<meta name="author" lang="en" content="Trevor Morris (trovster)">
+	<meta name="copyright" content="Trevor Morris (trovster)">
+	<meta name="description" content="My name is Trevor Morris and I'm a British web developer from the Midlands, UK. This website is a fusion of my online identity, including my blog.">
+	<meta name="keywords" content="web developer, developer, front-end developer, html, xhtml, css, php, midlands, trevor morris, trovster">
+	
+	<!-- geo-based meta data… -->
+	<meta name="geo.placename" content="Stafford">
+	<meta name="geo.region" content="gb-sts">
+	<meta name="geo.country" content="gb">
+	<meta name="geo.position" content="">
+	<meta name="ICBM" content=""> <!-- http://geourl.org/ -->
+	<meta name="country" content="gb">
+	<meta name="language" content="en">
+
+	<!-- technical meta data… -->
+	<meta name="robots" content="index,follow">
+	<meta name="revisit-after" content="28 days">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<!-- title… -->
+	<title>Trevor Morris; a British web developer from the Midlands, UK</title>
+			
+	<!-- favourite icon… -->
+	<link rel="icon" href="trovster/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="trovster/favicon.ico" type="image/x-icon">
+
+	<!-- stylesheets… -->
+	<link href="trovster/css/screen.css" media="screen,projection" rel="stylesheet" type="text/css">
+
+	<!-- progessive javascript enhancements… -->
+	<script src="trovster/dom/jquery-1.2.6.min.js" type="text/javascript"></script>
+	<script src="trovster/dom/jquery.metadata.min.js" type="text/javascript"></script>
+	<script src="trovster/dom/jquery.cookie.js" type="text/javascript"></script>
+	<script src="trovster/dom/jquery.color.js" type="text/javascript"></script>
+	<script src="trovster/dom/jquery.scrollto.js" type="text/javascript"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+    $(function () {
+      $.whenCached = function (url, fn) {
+        var $img = $('<img />').appendTo('body').hide().load(function () {
+          fn.call(this);
+          $img.remove();
+        }).attr('src', url);
+      };
+      
+      $('body').prepend('<div id="headerEffect"><div id="rainbow"><div /></div><div id="swirl" /></div>');
+
+      // don't fire until the rainbow is in the cache:
+      $.whenCached('trovster/css/img/header.swirl.png', function () {
+        
+        var width = $(this).width();
+        
+        $.whenCached('trovster/css/img/header.colour.3.png', function () {
+          // reset the position
+          var last = null;
+          var rainbow = $('#rainbow').get(0);
+        
+          // bring these bad boys in to view
+          setTimeout(function () {
+            $('#headerEffect').css('left', 0);
+            rainbow.scrollLeft = 1400; //width;
+
+            setInterval(function () {
+                rainbow.scrollLeft -= 5; // movement speed - the more this goes up, the more you want to bring the update time down
+                if (last == rainbow.scrollLeft) {
+                    rainbow.scrollLeft = width; // loop background
+                }
+                last = rainbow.scrollLeft;
+            }, 100); // less = smoother = more cpu :-( - 100 seems enough with move = 5            
+          }, 500);
+        });
+      });
+    });
+    </script>
+
+	<!-- alternative navigation… -->
+	<link href="http://www.trovster.com" rel="home" title="Homepage">
+	<link href="http://www.trovster.com/about/" rel="author" title="About information">
+
+<style type="text/css" media="screen">
+    #headerEffect {
+        position: absolute;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        top: 0;
+        left: -9999px;
+    }
+    
+    #swirl {
+        background: url(trovster/css/img/header.swirl.png) no-repeat scroll 50% 0;
+        height: 400px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    #rainbow {
+        overflow: hidden;
+        width: 1555px; /* width of swirl image */
+        height: 400px;
+        margin: 0 auto;
+    }
+    
+    #rainbow div {
+        background: url(trovster/css/img/header.colour.3.png) repeat-x scroll -20% 0;
+        height: 400px;
+        width: 3312px; /* nice and wide to allow for repeating smoothly */
+    }
+    
+</style>
+
+	<!-- conditional comments… -->
+	<!--[if lte IE 7]>
+	<link href="/css/_ie.css" media="screen" rel="stylesheet" type="text/css">
+	<![endif]-->
+	<!--[if lte IE 6]>
+	<link href="/css/_ie6.css" media="screen" rel="stylesheet" type="text/css">
+	<style type="text/css" media="screen">
+	    /* I've put the alpha transparency in the CSS so as to support non JS enabled visits */
+	    
+	    /* Note: full URL to png appears to be required... */
+	    #branding h1 a {						
+            background-image: none;
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://remysharp.com/demo/trovster/css/img/trevor-morris.png', sizingMethod='scale'); 
+        }
+
+        #swirl {
+            background-image: none;
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://remysharp.com/demo/trovster/css/img/header.swirl.png', sizingMethod='scale'); 
+        }
+
+        body {
+        	background: none;
+        }
+       
+	</style>
+	<![endif]-->
+		
+</head>
+
+<body id="www-trovster-com" class="hello">
+		<div id="container" class="sixteen">
+
+		<div id="branding">
+<h1><a href="../index.html" rel="home">Trevor&nbsp;Morris</a></h1>
+<h2 class="note introduction">Hello! I&#8217;m a British web developer <span class="amp">&amp;</span> this is my website – a fusion of my online&nbsp;identity.</h2>
+
+</div>
+
+<div id="content">
+<div id="content-primary">
+
+
+<div id="hello" class="column half hentry top">
+<h2>Welcome…</h2>
+<p class="lede">Please excuse the mess — I am just redecorating at the moment, but I have a lot of features planned for the near very&nbsp;future.</p>
+<p>Currently you can read my <a href="http://jqueryfordesigners.com/blog/">blog</a> entries, or found out a little more me <a href="../about/index.html">about me</a>. In the future
+you can expect a return of the comments and the <span class="caps">RSS</span> feeds, see my favourite photographs and follow my favourite links.
+You will also be able to find out what movies I&#8217;ve watched recently and what I would&nbsp;recommend.</p>
+
+<p>Thanks for stopping&nbsp;by.</p>
+</div>
+
+<div class="column half hentry top last">
+<h2 class="entry-title"><a href="http://jqueryfordesigners.com/blog/2008/08/geek-in-the-park-2008/" rel="bookmark" class="url">Geek in the Park&nbsp;2008</a></h2>
+<p class="entry-date"><abbr title="2008-08-12" class="date updated">Tuesday 12th August&nbsp;2008</abbr></p>
+<div class="entry-content">
+<p>Last Saturday saw the second ever <a href="http://www.geekinthepark.co.uk">Geek in the Park event</a>, organised by myself, taking place in Leamington Spa. However, this year it wasn&#8217;t so much Geek in the Park, more like Geek in the <em>Pub</em>, as the English summer presented us with rain for most of the&nbsp;day.</p>
+
+<p>A core set of people were in the pub from noon onwards and there were some good conversations going during the day. I spoke mostly with <a href="http://cole007.net">Cole Henley</a> (all the way down from Scotland!) and <a href="http://samrayner.com/">Sam Rayner</a> about a range of interesting&nbsp;topics.</p>
+
+<p>A lot more people arrvied around 7pm for the talks at KoKos. After setting up the projector and mics, and a few drinks later we were ready to go. <a href="http://www.brucelawson.co.uk">Bruce Lawson</a>, who talked at Geek in the Park in 2006, kindly kicked off the talks with a brief introduction. <a href="http://www.hicksdesign.co.uk">Jon Hicks</a> talked about &#8220;Pixel Pushing&#8221;, using his renowned experience to give some useful tips to anyone who is looking to start icon design. After a short break, Bruce came back on and briefly talked about a certain web browser and company who are very web-standards focused; <a href="http://www.opera.com">Opera</a>. <a href="http://allinthehead.com">Drew McLellan</a> entertained us with the cryptic title &#8220;What Brian Cant Never Taught You About Metadata&#8221;, a disguised talk on <a href="http://microformats.org">microformats</a>. And, although Macs never crash, Drew&#8217;s machine didn&#8217;t seem to adhere to that mantra during the&nbsp;presentation.</p>
+
+<p>There are some <a href="http://www.flickr.com/groups/geekinthepark/">awesome Geek in the Park 2008 photos</a> on Flickr. I recorded the two main presentations, so expect the audio, along with the slides and transcription (kindly sponsored by Opera) on a new look website in the coming&nbsp;weeks.</p>
+
+<p>Finally, I would like to thank Gareth and <a href="http://www.oneblackbear.com">One Black Bear</a> who provided all the equipment which made the evening go so smoothly, as well as a round of drinks to finish off the evening. A hat-tip goes out to <a href="http://www.brucelawson.co.uk">Bruce</a>, who did a sterling job at short notice, and will definitely be invited back to any future events. Also, a <strong>big thank-you</strong> goes out to both <a href="http://www.hicksdesign.co.uk">Jon Hicks</a> and <a href="http://allinthehead.com">Drew McLellan</a> for kindly traveling to the Midlands and speaking for this&nbsp;event.</p>
+</div>
+
+
+</div>
+
+
+</div>
+
+		<!-- end of div id #content -->
+		</div>
+		
+		<div id="navigation" class="navigation">
+<h2>Navigation</h2>
+<ul>
+	<li class="home active f odd"><a href="../index.html" rel="home">Home</a></li>
+	<li class="blog"><a href="http://www.trovster.com/blog/">Blog</a></li>
+	<li class="about l odd"><a href="http://www.trovster.com/about/">About</a></li>
+</ul>
+
+</div>
+
+		
+		<div id="footer">
+			<p>Thank you</p>
+			<p class="top"><a href="trovster.html#www-trovster-com">Top</a></p>
+		<!-- end of div id #footer -->
+		</div>
+		
+	<!-- end of div id #container -->
+	</div>
+</body>
+</html>

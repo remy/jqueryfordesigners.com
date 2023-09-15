@@ -1,0 +1,22 @@
+/* Edit me for the highlight color */
+.editableAuthor, .editableComment{
+ color: #000;
+ background-color: #ffffd3;
+ }
+.editAuthor { background-color: transparent; background-image: none; display: inline; margin: 0; padding: 0; border: 0; clear: none;}
+/* Edit me for the textarea shown when editing a comment */
+.textComment textarea { width: 90%; height: 100px; }
+/* Edit me for the div that contains the comment */
+.editComment, .editableComment, .textComment{ /*clear: both;*/ }
+/* various CSS classes you can edit if you really want to
+.ajaxSaveButtons { }
+.textAuthor { }
+.ajaxApproveLinks{}
+span.ajax-admin-edit-links {}
+*/
+
+/*Edit me for the message that shows up to a user(non admin) when leaving a comment */
+.ajax-edit { font-size: 1em; font-style: italic; background-color: #333; color: #fff; padding: 5px; font-weight: bold;}
+.ajax-edit .ajax-timer { font-size: 0.8em; color: #FFCC66; }
+input.ajax-error { border: 3px solid #966; }
+textarea.ajax-error, li.ajax-error { background: #966; }

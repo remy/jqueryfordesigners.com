@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8 />
+<title>DOM navigation</title>
+<style>
+body { font-family: 'helvetica neue', arial, helvetica; width: 500px; margin: 40px auto;}
+.note { font-size: 80%; }
+#bio { display: none; }
+</style>
+</head>
+<body>
+<h1>What Remy does</h1>
+<div id="container">
+  <div>
+    <h2>jQuery</h2>
+    <p>It loves the lazy developer - lazy in the good way, I'd rather spend time on the interesting stuff rather than donkey DOM scripting.</p>
+    <p>Most of my jQuery stuff can be see on <a href="../index.html" title="jQuery for Designers - Tutorials and screencasts">jQuery for Designers</a></p>
+    <p>Some extra stuff: <a class="reveal" href="dom.html#bio">Remy's bio</a></p>
+  </div>
+  <div>
+    <h2>JavaScript</h2>
+    <p>JavaScript doesn't required a compiler or anything special to write the code, back when you had a browser to run your code or you could download PSION or Palm's SDK over a 9k modem, you'll understand why I lost patience!</p>
+    <p>This is definitely my passion and has been since the mid 90s, and certainlys explains how I got in to jQuery.</p>
+    <p>I do lots of things with JavaScript, along with workshops, I do <a href="http://remysharp.com/talks#dev">talks</a>, run <a title="A front end developer conference in Brighton" href="http://full-frontal.org">a conference</a> and <a title="A collection of my hacks" href="http://remysharp.com/twitter">hacking <em>twitter</em> apps</a> amongst other things.</p>
+  </div>
+  <div>
+    <h2>Remy</h2>
+    <ul>
+      <li>Was born once</li>
+      <li>...or twice?</li>
+    </ul>
+  </div>
+  <div>
+    <h2>HTML5</h2>
+    <p>It's new and shiny and it's so damn packed with <a href="http://dev.w3.org/html5/spec/spec.html">JavaScript APIs</a> I couldn't help myself.</p>
+    <p>I've also written a book called <a href="http://introducinghtml5.com/" title="Introducing HTML5: Bruce Lawson and Remy Sharp">Introducing HTML5</a> with <a href="http://brucelawson.co.uk/" title="Bruce Lawson&#8217;s  personal site">Bruce Lawson</a> available in late July.</p>
+  </div>
+  <div>
+    <h2>Writing</h2>
+    <p>Articles, books, blog posts, first about jQuery, but eventually my topics grew - actually I'm probably doing more writing than I expected to do after I failed English at GCSE.</p>
+  </div>
+  <div>
+    <h2>A few pictures</h2>
+    <p>Here be a link to fire off an Ajax request for some pictures: <a href="pics.json" id="getpics">get pictures</a></p>
+  </div>
+</div>
+<script src="jquery-1.4.2.min.js"></script>
+<script>
+$('#getpics').click(function (event) {
+  event.preventDefault();
+  
+  var link = this;
+  $.ajax({
+    url: this.href,
+    dataType: 'json',
+    success: function (pictures) {
+      var html = [];
+      
+      $.each(pictures, function (i, url) {
+        html.push('<img width="100" src="http://jqueryfordesigners.com/demo/images/'&#32;+&#32;url&#32;+&#32;'" />');
+      });
+      
+      $(link).closest('div').append(html.join(''));
+    }
+  });
+  
+  return false;
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
