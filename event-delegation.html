@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<title>Getting pictures!</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'helvetica neue', arial, helvetica;
+  }
+
+  a img {
+    border: 0;
+  }
+
+  img {
+    /*  border: 5px solid #000;*/
+    /*  margin: 10px;*/
+  }
+
+  ul {
+    width: 315px;
+    height: 100%;
+    overflow-y: auto;
+    white-space: nowrap;
+    list-style: none;
+  }
+
+  li {
+    display: block;
+    float: left;
+    height: 75px;
+    cursor: pointer;
+  }
+
+  #loadingStatus {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 5px 10px;
+    background: #c00;
+    color: #fff;
+  }
+
+  #main {
+    position: fixed;
+    left: 360px;
+    top: 50px;
+  }
+
+  #main div {
+    border: 10px solid #000;
+    height: 400px;
+    width: 400px;
+    font-family: georgia;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+    background: rgba(0, 0, 0, .3);
+    font-size: 38px;
+    text-align: center;
+    line-height: 400px;
+  }
+
+  #main img {
+    border: 10px solid #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+  }
+
+  #next {
+    margin: 20px;
+  }
+
+  /* via https://github.com/ubuwaits/css3-buttons */
+  button.cupid-blue {
+    background: #d7e5f5;
+    background: -moz-linear-gradient(top, #d7e5f5 0%, #cbe0f5 100%);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d7e5f5), to(#cbe0f5));
+    border-top: 1px solid #abbbcc;
+    border-left: 1px solid #a7b6c7;
+    border-bottom: 1px solid #a1afbf;
+    border-right: 1px solid #a7b6c7;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: inset 0 1px 0 0 #fff;
+    -webkit-box-shadow: inset 0 1px 0 0 #fff;
+    box-shadow: inset 0 1px 0 0 #fff;
+    color: #1a3e66;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 1;
+    padding: 6px 0 7px 0;
+    text-align: center;
+    text-shadow: 0 1px 1px #fff;
+    width: 150px;
+  }
+
+  button.cupid-blue:hover {
+    background: #ccd9e8;
+    background: -moz-linear-gradient(top, #ccd9e8 0%, #c1d4e8 100%);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccd9e8), to(#c1d4e8));
+    border-top: 1px solid #a1afbf;
+    border-left: 1px solid #9caaba;
+    border-bottom: 1px solid #96a3b3;
+    border-right: 1px solid #9caaba;
+    -moz-box-shadow: inset 0 1px 0 0 #f2f2f2;
+    -webkit-box-shadow: inset 0 1px 0 0 #f2f2f2;
+    box-shadow: inset 0 1px 0 0 #f2f2f2;
+    color: #163659;
+    cursor: pointer;
+  }
+
+  button.cupid-blue:active {
+    border: 1px solid #8c98a7;
+    -moz-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eee;
+    -webkit-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eee;
+    box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eee;
+  }
+</style>
+</head>
+
+<body><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+  <script>__wm.rw(0);</script>
+  <div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;">
+    <div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
+      <div id="donato" style="position:relative;width:100%;">
+        <div id="donato-base">
+          <iframe id="donato-if"
+            src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20110808172039/http%3A//jqueryfordesigners.com/demo/event-delegation.html"
+            scrolling="no" frameborder="0" style="width:100%; height:100%">
+          </iframe>
+        </div>
+      </div>
+      <div id="wm-ipp-inside">
+        <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;">
+          <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
+            <a href="/web/" title="Wayback Machine home page"><img
+                src="/_static/images/toolbar/wayback-toolbar-logo-200.png"
+                srcset="/_static/images/toolbar/wayback-toolbar-logo-100.png, /_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, /_static/images/toolbar/wayback-toolbar-logo-200.png 2x"
+                alt="Wayback Machine" style="width:100px" border="0" /></a>
+          </div>
+          <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
+            <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get"
+              action="/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL"
+                value="http://jqueryfordesigners.com/demo/event-delegation.html" onfocus="this.focus();this.select();"
+                style="flex:1;" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date"
+                value="20110808172039" /><input type="submit" value="Go" />
+            </form>
+            <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
+              <div class="s" id="wm-nav-captures" style="flex:1;">
+                <a class="t" href="/web/20110808172039*/http://jqueryfordesigners.com/demo/event-delegation.html"
+                  title="See a list of every capture for this URL">29 captures</a>
+                <div class="r" title="Timespan for captures of this URL">18 Jun 2011 - 08 Oct 2021</div>
+              </div>
+              <div class="k">
+                <a href="" id="wm-graph-anchor">
+                  <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+                    <canvas id="wm-sparkline-canvas" width="700" height="27" border="0"></canvas>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="n">
+            <table>
+              <tbody>
+                <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+                <tr class="m">
+                  <td class="b" nowrap="nowrap"><a
+                      href="https://web.archive.org/web/20110618162003/http://jqueryfordesigners.com:80/demo/event-delegation.html"
+                      title="18 Jun 2011"><strong>Jun</strong></a></td>
+                  <td class="c" id="displayMonthEl" title="You are here: 17:20:39 Aug 08, 2011">AUG</td>
+                  <td class="f" nowrap="nowrap"><a
+                      href="https://web.archive.org/web/20110925020945/http://jqueryfordesigners.com:80/demo/event-delegation.html"
+                      title="25 Sep 2011"><strong>Sep</strong></a></td>
+                </tr>
+                <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+                <tr class="d">
+                  <td class="b" nowrap="nowrap"><a
+                      href="https://web.archive.org/web/20110618162003/http://jqueryfordesigners.com:80/demo/event-delegation.html"
+                      title="16:20:03 Jun 18, 2011"><img src="/_static/images/toolbar/wm_tb_prv_on.png"
+                        alt="Previous capture" width="14" height="16" border="0" /></a></td>
+                  <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;"
+                    title="You are here: 17:20:39 Aug 08, 2011">08</td>
+                  <td class="f" nowrap="nowrap"><a
+                      href="https://web.archive.org/web/20110810143402/http://jqueryfordesigners.com:80/demo/event-delegation.html"
+                      title="14:34:02 Aug 10, 2011"><img src="/_static/images/toolbar/wm_tb_nxt_on.png"
+                        alt="Next capture" width="14" height="16" border="0" /></a></td>
+                </tr>
+                <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+                <tr class="y">
+                  <td class="b" nowrap="nowrap">2010</td>
+                  <td class="c" id="displayYearEl" title="You are here: 17:20:39 Aug 08, 2011">2011</td>
+                  <td class="f" nowrap="nowrap"><a
+                      href="https://web.archive.org/web/20121010133930/http://jqueryfordesigners.com/demo/event-delegation.html"
+                      title="10 Oct 2012"><strong>2012</strong></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="r"
+            style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
+            <div id="wm-btns" style="text-align:right;height:23px;">
+              <span class="xxs">
+                <div id="wm-save-snapshot-success">success</div>
+                <div id="wm-save-snapshot-fail">fail</div>
+                <a id="wm-save-snapshot-open" href="#" title="Share via My Web Archive">
+                  <span class="iconochive-web"></span>
+                </a>
+                <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in">
+                  <span class="iconochive-person"></span>
+                </a>
+                <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
+              </span>
+              <a class="xxs" href="http://faq.web.archive.org/" title="Get some help using the Wayback Machine"
+                style="top:-6px;"><span class="iconochive-question"
+                  style="color:rgb(87,186,244);font-size:160%;"></span></a>
+              <a id="wm-tb-close" href="#close" style="top:-2px;" title="Close the toolbar"><span
+                  class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
+            </div>
+            <div id="wm-share" class="xxs">
+              <a href="/web/20110808172039/http://web.archive.org/screenshot/http://jqueryfordesigners.com/demo/event-delegation.html"
+                id="wm-screenshot" title="screenshot">
+                <span class="wm-icon-screen-shot"></span>
+              </a>
+              <a href="#" id="wm-video" title="video">
+                <span class="iconochive-movies"></span>
+              </a>
+              <a id="wm-share-facebook" href="#"
+                data-url="https://web.archive.org/web/20110808172039/http://jqueryfordesigners.com:80/demo/event-delegation.html"
+                title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook"
+                  style="color:#3b5998;font-size:160%;"></span></a>
+              <a id="wm-share-twitter" href="#"
+                data-url="https://web.archive.org/web/20110808172039/http://jqueryfordesigners.com:80/demo/event-delegation.html"
+                title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter"
+                  style="color:#1dcaff;font-size:160%;"></span></a>
+            </div>
+            <div style="padding-right:2px;text-align:right;white-space:nowrap;">
+              <a id="wm-expand" class="wm-btn wm-closed" href="#expand" onclick="__wm.ex(event);return false;"><span
+                  id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs"
+                  style="font-size:80%;">About this capture</span></a>
+            </div>
+          </div>
+        </div>
+        <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+          <div id="wm-capinfo-notice" source="api"></div>
+          <div id="wm-capinfo-collected-by">
+            <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">COLLECTED BY</div>
+            <div style="padding:3px;position:relative" id="wm-collected-by-content">
+              <div style="display:inline-block;vertical-align:top;width:50%;">
+                <span class="c-logo" style="background-image:url(https://archive.org/services/img/alexacrawls);"></span>
+                Organization: <a style="color:#33f;" href="https://archive.org/details/alexacrawls" target="_new"><span
+                    class="wm-title">Alexa Crawls</span></a>
+                <div style="max-height:75px;overflow:hidden;position:relative;">
+                  <div
+                    style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);">
+                  </div>
+                  Starting in 1996, <a href="http://www.alexa.com/">Alexa Internet</a> has been donating their crawl
+                  data to the Internet Archive. Flowing in every day, these data are added to the <a
+                    href="http://web.archive.org/">Wayback Machine</a> after an embargo period.
+                </div>
+              </div>
+              <div style="display:inline-block;vertical-align:top;width:49%;">
+                <span class="c-logo" style="background-image:url(https://archive.org/services/img/alexacrawls)"></span>
+                <div>Collection: <a style="color:#33f;" href="https://archive.org/details/alexacrawls"
+                    target="_new"><span class="wm-title">Alexa Crawls</span></a></div>
+                <div style="max-height:75px;overflow:hidden;position:relative;">
+                  <div
+                    style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);">
+                  </div>
+                  Starting in 1996, <a href="http://www.alexa.com/">Alexa Internet</a> has been donating their crawl
+                  data to the Internet Archive. Flowing in every day, these data are added to the <a
+                    href="http://web.archive.org/">Wayback Machine</a> after an embargo period.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="wm-capinfo-timestamps">
+            <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center"
+              title="Timestamps for the elements of this page">TIMESTAMPS</div>
+            <div>
+              <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important">
+              </div>
+              <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img
+                  src="/_static/images/loading.gif" alt="loading" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="wm-ipp-print">The Wayback Machine -
+    https://web.archive.org/web/20110808172039/http://jqueryfordesigners.com:80/demo/event-delegation.html</div>
+  <script type="text/javascript">//<![CDATA[
+    __wm.bt(700, 27, 25, 2, "web", "http://jqueryfordesigners.com/demo/event-delegation.html", "20110808172039", 1996, "/_static/", ["/_static/css/banner-styles.css?v=S1zqJCYt", "/_static/css/iconochive.css?v=qtvMKcIJ"], false);
+    __wm.rw(1);
+    //]]></script>
+  <!-- END WAYBACK TOOLBAR INSERT -->
+
+  <div id="loadingStatus">Loading</div>
+  <p><button id="next" class="cupid-blue">Next group</button></p>
+  <ul id="pictures">
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4132/5176187907_25d26f48f0_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4133/5176793736_d071069871_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4148/5176790372_c5a6a3cc7a_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4103/5176188725_397e641c7f_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4110/5176791934_bb21e4b523_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4130/5176184917_92e4b89148_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4083/5176794362_c7543d2e29_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4128/5176189635_4030795e8d_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4129/5176789954_4f4e5edd2f_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4132/5176187515_27853af67d_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4128/5176792872_c146b28478_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4107/5176790750_8c1471a753_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4110/5176789130_0d876b8489_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4132/5176788284_a98e4e92a0_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4147/5176789562_ed5e339f57_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4145/5176786398_d8fef3b0e1_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4147/5176181843_8c58178ea9_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4106/5176184049_bc11cbb7a9_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4126/5176767160_27d7c6346b_s.jpg">
+    </li>
+    <li><img
+        src="https://web.archive.org/web/20110808172039im_/http://farm5.static.flickr.com/4107/5176784060_3a55131a91_s.jpg">
+    </li>
+  </ul>
+  <div id="main">
+    <div>Click on a picture</div>
+  </div>
+  <script src="https://web.archive.org/web/20110808172039js_/http://code.jquery.com/jquery.min.js"></script>
+  <script>
+    var flickrURL = 'https://web.archive.org/web/20110808172039/http://api.flickr.com/services/rest/?method=flickr.photos.search&page=%page%&per_page=20&api_key=18702ea1538bc199e2c7e1d57270cd37&user_id=38257258%40N00&tags=fullfrontalconf&format=json&jsoncallback=?';
+
+    var $pictures = $('#pictures'),
+      $main = $('#main'),
+      $next = $('#next'),
+      html = [],
+      page = 1;
+
+    // $pictures.find('img').click(function () {
+    $pictures.delegate('img', 'click', function () {
+      $('#loadingStatus').fadeIn();
+      var src = this.src.replace(/_s/, '');
+      $('<img>').attr('src', src).load(function () {
+        $main.empty().append(this);
+        $('#loadingStatus').stop(true, true).fadeOut();
+      });
+    });
+
+    function getPage(page) {
+      $.getJSON(flickrURL.replace(/%page%/, page), function (data) {
+        html = [];
+        $.each(data.photos.photo, function (i, photo) {
+          html.push('<li><img src="https://web.archive.org/web/20110808172039/http://farm' + photo.farm + '.static.flickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg" /></li>');
+        });
+
+        $pictures.empty().append(html.join(''));
+        $('#loadingStatus').hide();
+      });
+    }
+
+    $next.click(function () {
+      getPage(++page);
+    });
+
+  </script>
+</body>
+
+</html>
